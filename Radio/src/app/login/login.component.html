@@ -4,7 +4,7 @@
   </div>
 </div>
 
-<div class="container-login color-light round-bot" [@login-pane]>
+<div class="container-login color-light round-bot">
   <div class="login-pane">
 
     <div>
@@ -17,8 +17,9 @@
       <input class="txt inner" type="text" name="" value="" [(ngModel)]="input_pw">
     </div>
 
-    <div>
+    <div class="centrify">
       <input class="btn" type="submit" name="" value="Login" (click)="redirHome()">
+      <strong><a class="label_skip" href="" routerLink='/home' routerLinkActive="active">Skip.</a></strong>
     </div>
 
   </div>

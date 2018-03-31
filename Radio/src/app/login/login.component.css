@@ -1,3 +1,4 @@
+/* Pars & Alignment */
 .container-login {
     display: grid;
     grid-template-columns: 100% auto;
@@ -13,11 +14,27 @@
   border-bottom-left-radius: 15px;
   border-bottom-right-radius: 15px;
 }
-
+.color-dark {
+    background: #8c0101;
+}
+.color-light {
+    background: #e74646;
+}
 .col {
     padding: .4em 1.3em;
 }
+.inner {
+  display: inline-block;
+  vertical-align: middle;
+}
 
+.centrify {
+  align-self: center;
+  justify-self: center;
+  text-align: center;
+}
+
+/* Elements:  */
 .login-pane {
     padding: .4em 1em 1.3em 1em;
     white-space: nowrap;
@@ -28,23 +45,12 @@
   margin-right: 5px;
   width: 120px;
 }
-
-.inner {
-  display: inline-block;
-  vertical-align: middle;
+.label_skip:hover{
+  text-decoration: underline;
 }
 
-.centrify {
-  align-self: center;
-  justify-self: center;
-}
 
-.color-dark {
-    background: #8c0101;
-}
-.color-light {
-    background: #e74646;
-}
+
 
 input.txt {
     border: 0;
@@ -58,7 +64,7 @@ input.btn {
     padding:0.2em 3em;
     background:#441799;
     cursor:pointer;
-    margin: 0.5em auto 0.2em auto;
+    margin: 0.5em auto 0.5em auto;
     /* border */
     border-color: #5429a6;
     border-radius: 10px;
@@ -67,9 +73,9 @@ input.btn {
     text-align: center;
     font-size: 1.2em;
 }
-
-.login-title {
-  text-align: center;
+input.btn:hover {
+  background: #4c2595;
+  border-color: #47238b;
 }
 
 /* Responsive screen */
