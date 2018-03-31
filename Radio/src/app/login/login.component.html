@@ -1,0 +1,25 @@
+<div class="container-login color-dark round-top">
+  <div class="centrify">
+      <h2 class="login-title">Authenticate Yourself</h2>
+  </div>
+</div>
+
+<div class="container-login color-light round-bot" [@login-pane]>
+  <div class="login-pane">
+
+    <div>
+      <p class="inner log-labels">Your username</p>
+      <input class="txt inner" type="text" name="" value="" [(ngModel)]="input_usr">
+    </div>
+
+    <div>
+      <p class="inner log-labels">Your password</p>
+      <input class="txt inner" type="text" name="" value="" [(ngModel)]="input_pw">
+    </div>
+
+    <div>
+      <input class="btn" type="submit" name="" value="Login" (click)="redirHome()">
+    </div>
+
+  </div>
+</div>
