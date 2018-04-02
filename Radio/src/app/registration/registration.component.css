@@ -1,22 +1,17 @@
 /* Pars & Alignment */
-.container {
-  padding: 0;
-  margin: -3% 30% 0 29%;
-}
-
-.container-login {
-    display: grid;
-    grid-template-columns: 100% auto;
-
+.container-register {
+    margin-left: 10%;
+    margin-right: 10%;
     min-width: 380px;
 }
-
 .color-light {
+    display: grid;
     background: #8c0101;
     border-top-left-radius: 15px;
     border-top-right-radius: 15px;
 }
 .color-dark {
+    display: grid;
     background: #400808;
     border-bottom-left-radius: 15px;
     border-bottom-right-radius: 15px;
@@ -36,26 +31,22 @@
 }
 
 /* Elements:  */
-.login-pane {
-    padding: .4em 1em 1.3em 1em;
-    white-space: nowrap;
+.register-pane {
+  margin-top: 1em;
+  margin-bot: 1em;
 }
 
 .log-labels {
   margin-left: 3em;
-  margin-right: 5px;
-  width: 120px;
+  margin-right: 0.6em;
+  width: 150px;
+  text-align: right;
 }
 .label_skip:hover{
   text-decoration: underline;
 }
 
-#radio_logo {
-  width: 400px;
-  height: auto;
-  filter: invert(100%);
-  margin: 0 auto 1em 12%;
-}
+
 
 
 input.txt {
@@ -66,44 +57,22 @@ input.txt {
     margin-right: 20%;
 }
 input.btn {
-    display:block;
+    display: inline;
     padding:0.2em 3em;
     background:#441799;
     cursor:pointer;
-    margin: 0.5em auto 0.5em auto;
+    margin: 1em auto 1em auto;
+    max-width: 165px;
     /* border */
     border-color: #5429a6;
     border-radius: 10px;
+    border-width: 1px;
     /* text */
     color:#ffffff;
     text-align: center;
     font-size: 1.2em;
 }
 input.btn:hover {
-  background: #4c2595;
-  border-color: #47238b;
-}
-
-/* Responsive screen */
-@media only screen and (max-width: 1050px) {
-
-  .login-pane {
-      white-space: normal;
-      min-width: 250px;
-  }
-  .log-labels {
-    margin-left: 35%;
-    margin-bottom: 0.3em;
-  }
-  input.txt {
-    margin-left: 3em;
-    min-width: 260px;
-    text-align: center;
-  }
-  input.btn {
-    margin-top: 1.2em;
-  }
-  #radio_logo {
-    margin-left: 0;
-  }
+  background: #2d037b;
+  border-color: #380f86;
 }

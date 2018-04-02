@@ -3,17 +3,24 @@ import { Router } from '@angular/router';
 import { routerTransition } from '../router.animations';
 
 @Component({
-  selector: 'home',
-  templateUrl: './home.component.html',
-  styleUrls: ['./home.component.css'],
+  selector: 'app-registration',
+  templateUrl: './registration.component.html',
+  styleUrls: ['./registration.component.css'],
   animations: [routerTransition()],
   host: {'[@routerTransition]': ''}
 })
-export class HomeComponent implements OnInit {
+export class RegistrationComponent implements OnInit {
 
   constructor(private router: Router) { }
 
   ngOnInit() {
   }
-  
+
+  redirHome() {
+    this.router.navigate(['home']);
+  }
+
+  redirLogin() {
+    this.router.navigate(['login']);
+  }
 }

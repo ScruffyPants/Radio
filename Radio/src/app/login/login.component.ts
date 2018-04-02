@@ -16,8 +16,8 @@ export class LoginComponent implements OnInit {
 
   username: string = 'user';
   password: string = 'user';
-  input_usr: string;
-  input_pw: string;
+  input_usr: string = 'user';
+  input_pw: string = 'user';
 
   constructor(private router: Router) { }
 

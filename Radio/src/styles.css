@@ -3,27 +3,13 @@
 
 body {
   background: rgb(45, 35, 40);
-  padding: 3em;
+  padding: 3em 0 0 0;
   font-family: 'Raleway', 'Arial';
   color: #fff;
-}
-
-ul {
-  list-style-type: none;
-  margin: 0 0 2em 0;
-  padding: 0;
-}
-
-ul li {
-  display: inline;
-  margin-right: 30px;
-}
-
-ul li a {
-  font-size: 1.5em;
 }
 
 a {
   color: #fff;
   text-decoration: none;
+  cursor: pointer;
 }

@@ -1,0 +1,39 @@
+
+<div class="container-register centrify">
+
+  <div class="color-light">
+      <h1>Registration</h1>
+  </div>
+
+  <div class="color-dark">
+    <form class="register-pane" action="index.html" method="post">
+
+      <div>
+        <p class="inner log-labels">Enter username:</p>
+        <input class="txt inner" type="text" name="username" value="" placeholder="Your username.">
+      </div>
+
+      <div>
+        <p class="inner log-labels">Enter password:</p>
+        <input class="txt inner" type="password" name="password" value="" placeholder="Your password.">
+      </div>
+
+      <div>
+        <p class="inner log-labels">Repeat password</p>
+        <input class="txt inner" type="password" name="re-password" value="" placeholder="Re-enter password.">
+      </div>
+
+      <div>
+        <p class="inner log-labels">Set a password hint:</p>
+        <input class="txt inner" type="text" name="pw_hint" value="" placeholder="In case you'd forget it.">
+      </div>
+
+      <div class="centrify">
+        <input class="btn btn-login" name="" value="Login" (click)="redirHome()" > <!-- type="submit" -->
+        <input class="btn btn-cancel" name="" value="Cancel" (click)="redirLogin()">
+      </div>
+
+    </form>
+  </div>
+
+</div>

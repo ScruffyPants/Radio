@@ -1,26 +1,32 @@
-<div class="container-login color-dark round-top">
-  <div class="centrify">
-      <h2 class="login-title">Authenticate Yourself</h2>
-  </div>
-</div>
+<div class="container">
 
-<div class="container-login color-light round-bot">
-  <div class="login-pane">
+  <img id="radio_logo" src="../../assets/Radio_logo.gif" alt="Radio logo">
 
-    <div>
-      <p class="inner log-labels">Your username</p>
-      <input class="txt inner" type="text" name="" value="" [(ngModel)]="input_usr">
-    </div>
-
-    <div>
-      <p class="inner log-labels">Your password</p>
-      <input class="txt inner" type="text" name="" value="" [(ngModel)]="input_pw">
-    </div>
-
+  <div class="container-login color-light">
     <div class="centrify">
-      <input class="btn" type="submit" name="" value="Login" (click)="redirHome()">
-      <strong><a class="label_skip" href="" routerLink='/home' routerLinkActive="active">Skip.</a></strong>
+        <h2 class="login-title">Authenticate Yourself</h2>
     </div>
-
   </div>
+
+  <div class="container-login color-dark">
+    <div class="login-pane">
+
+      <div>
+        <p class="inner log-labels">Your username</p>
+        <input class="txt inner" type="text" name="" value="" [(ngModel)]="input_usr">
+      </div>
+
+      <div>
+        <p class="inner log-labels">Your password</p>
+        <input class="txt inner" type="password" name="" value="" [(ngModel)]="input_pw">
+      </div>
+
+      <div class="centrify">
+        <input class="btn" type="submit" name="" value="Login" (click)="redirHome()">
+        <strong><a class="label_skip" href="" routerLink='/registration' routerLinkActive="active">Register.</a></strong>
+      </div>
+
+    </div>
+  </div>
+
 </div>
