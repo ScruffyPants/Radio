@@ -13,3 +13,12 @@ a {
   text-decoration: none;
   cursor: pointer;
 }
+
+.main-container {
+  margin-top: -99em;
+  margin-left: 16em;
+}
+
+.page-title {
+  font-size: 4em;
+}

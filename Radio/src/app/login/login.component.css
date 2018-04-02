@@ -74,14 +74,15 @@ input.btn {
     /* border */
     border-color: #5429a6;
     border-radius: 10px;
+    border-width: 1px;
     /* text */
     color:#ffffff;
     text-align: center;
     font-size: 1.2em;
 }
 input.btn:hover {
-  background: #4c2595;
-  border-color: #47238b;
+  background: #2d037b;
+  border-color: #380f86;
 }
 
 /* Responsive screen */

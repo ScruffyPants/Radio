@@ -62,7 +62,7 @@ input.btn {
     background:#441799;
     cursor:pointer;
     margin: 1em auto 1em auto;
-    max-width: 165px;
+    width: 10em;
     /* border */
     border-color: #5429a6;
     border-radius: 10px;
