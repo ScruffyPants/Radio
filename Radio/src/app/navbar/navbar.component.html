@@ -1,4 +1,4 @@
-<nav>
+<nav  *ngIf="globals.isLogged">
 
   <a class="acc_link" href="" routerLink='/home' routerLinkActive="active"><img id="radio_logo" src="../../assets/Radio_logo.gif" alt="Radio logo"></a>
 
@@ -10,7 +10,7 @@
     <li><a href="#">Filter</a></li>
     <br><br><br><br>
     <li><a class="acc_link" href="" routerLink='/profile' routerLinkActive="active">Profile</a></li>
-    <li><a class="acc_link" href="" routerLink='/login' routerLinkActive="active">Logout</a></li>
+    <li><a class="acc_link" href="" routerLink='/login' routerLinkActive="active" (click)="logOut()">Logout</a></li>
 
   </ul>
 </nav>

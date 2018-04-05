@@ -6,6 +6,7 @@ body {
   padding: 3em 0 0 0;
   font-family: 'Raleway', 'Arial';
   color: #fff;
+  overflow: hidden;
 }
 
 a {
@@ -15,10 +16,16 @@ a {
 }
 
 .main-container {
-  margin-top: -99em;
+  margin-top: -98em;
   margin-left: 16em;
 }
 
 .page-title {
   font-size: 4em;
+}
+
+.centrify {
+  align-self: center;
+  justify-self: center;
+  text-align: center;
 }

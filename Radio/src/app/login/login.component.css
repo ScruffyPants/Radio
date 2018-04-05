@@ -1,7 +1,8 @@
 /* Pars & Alignment */
 .container {
   padding: 0;
-  margin: -3% 30% 0 29%;
+  margin-left: 29%;
+  margin-right: 30%;
 }
 
 .container-login {

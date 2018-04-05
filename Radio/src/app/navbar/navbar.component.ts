@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Globals } from '../globals';
 
 @Component({
   selector: 'navbar',
@@ -7,9 +8,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NavbarComponent implements OnInit {
 
-  constructor() { }
+  constructor(private globals: Globals) { }
 
   ngOnInit() {
+  }
+
+  logOut() {
+    this.globals.isLogged = false;
   }
 
 }
