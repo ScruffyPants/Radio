@@ -11,20 +11,26 @@
   <div class="container-login color-dark">
     <div class="login-pane">
 
-      <div>
-        <p class="inner log-labels">Your username</p>
-        <input class="txt inner" type="text" name="" value="" [(ngModel)]="input_usr">
-      </div>
+      <!-- <form (ngSubmit)="onSubmit(fm)" #fm="ngForm"> -->
 
-      <div>
-        <p class="inner log-labels">Your password</p>
-        <input class="txt inner" type="password" name="" value="" [(ngModel)]="input_pw">
-      </div>
 
-      <div class="centrify">
-        <input class="btn" type="submit" name="" value="Login" (click)="redirHome()">
-        <strong><a class="label_skip" href="" routerLink='/registration' routerLinkActive="active">Register.</a></strong>
-      </div>
+        <div>
+          <p class="inner log-labels">Your username</p>
+          <input class="txt inner" type="text" ngModel name="username" [(ngModel)]="input_usr">
+        </div>
+
+        <div>
+          <p class="inner log-labels">Your password</p>
+          <input class="txt inner" type="password" ngModel name="password" [(ngModel)]="input_pw">
+        </div>
+
+        <div class="centrify">
+          <input class="btn" type="submit" value="Login" (click)="redirHome()">
+          <strong><a class="label_skip" href="" routerLink='/registration' routerLinkActive="active">Register.</a></strong>
+        </div>
+
+
+      <!-- </form> -->
 
     </div>
   </div>

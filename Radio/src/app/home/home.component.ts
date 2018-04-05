@@ -12,7 +12,11 @@ import { Globals } from '../globals';
 })
 export class HomeComponent implements OnInit {
 
-  constructor(private router: Router, private globals: Globals) { }
+  constructor(private router: Router, private globals: Globals) {
+    if (!this.globals.isLogged) {
+      router.navigate(['login']);
+    }
+  }
 
   ngOnInit() {
     console.log(this.globals.isLogged);

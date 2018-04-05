@@ -39,4 +39,8 @@ export class LoginComponent implements OnInit {
     }
   }
 
+  // onSubmit(form: ngForm){
+  // 	console.log(form.value);
+  // }
+
 }

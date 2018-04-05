@@ -12,9 +12,11 @@ import { HomeComponent } from './home/home.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { RegistrationComponent } from './registration/registration.component';
 import { ProfileComponent } from './profile/profile.component';
+import { SearchComponent } from './search/search.component';
+import { PlayerComponent } from './player/player.component';
+import { ChannelComponent } from './channel/channel.component'
 
-import { Globals } from './globals'
-
+import { Globals } from './globals';
 
 @NgModule({
   declarations: [
@@ -23,7 +25,10 @@ import { Globals } from './globals'
     HomeComponent,
     NavbarComponent,
     RegistrationComponent,
-    ProfileComponent
+    ProfileComponent,
+    SearchComponent,
+    PlayerComponent,
+    ChannelComponent
   ],
   imports: [
     BrowserModule,

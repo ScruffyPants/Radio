@@ -6,6 +6,9 @@ import { RegistrationComponent } from './registration/registration.component';
 
 import { HomeComponent } from './home/home.component';
 import { ProfileComponent } from './profile/profile.component';
+import { SearchComponent } from './search/search.component';
+import { PlayerComponent } from './player/player.component';
+import { ChannelComponent } from './channel/channel.component'
 
 
 const routes: Routes = [
@@ -29,6 +32,18 @@ const routes: Routes = [
   {
     path: 'profile',
     component: ProfileComponent
+  },
+  {
+    path: 'search',
+    component: SearchComponent
+  },
+  {
+    path: 'channel',
+    component: ChannelComponent
+  },
+  {
+    path: 'player',
+    component: PlayerComponent
   },
   {
     path: '**',
