@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { routerTransition } from '../router.animations';
+import { Globals } from '../globals';
 
 @Component({
   selector: 'home',
@@ -11,9 +12,14 @@ import { routerTransition } from '../router.animations';
 })
 export class HomeComponent implements OnInit {
 
-  constructor(private router: Router) { }
+  constructor(private router: Router, private globals: Globals) {
+    if (!this.globals.isLogged) {
+      router.navigate(['login']);
+    }
+  }
 
   ngOnInit() {
+    console.log(this.globals.isLogged);
   }
-  
+
 }

@@ -1,14 +1,19 @@
 nav {
-    /* background-color: rgba(145, 9, 9, 0.5); */
+    position: static;
+    left:0;
+    top:5em;
     background-color: #390606;
     height: 100em;
     width: 100px;
     padding: 0 8em 0 0;
     margin-top: -5em;
     margin-left: -1em;
+    margin-right: 14em;
+    /* display: none; */
 }
 
 nav ul {
+    position: absolute;
     list-style: none;
     padding-top: 0.6em;
     padding-left: 0.4em;
@@ -40,4 +45,8 @@ nav ul li .acc_link {
   height: auto;
   padding: 2em 4em 0 0.3em;
   filter: invert(100%);
+}
+
+.blank-space {
+  height: 8em;
 }
