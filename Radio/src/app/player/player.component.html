@@ -1,5 +1,29 @@
+
 <div class="main-container">
+  <div class="channels-number">
+    Number of Channels: <strong>{{channels.length}}</strong>
+  </div>
   <div>
-      <p>Player works!</p>
+      <div class="fastName" id="temp" *ngIf="tempDiv">
+        {{ tempName }}
+      </div>
+      <ul>
+        <li *ngFor="let channel of channels; let i = index" (click)="showChannel(i)">
+
+          <h1>
+            <img id="small_radio" src="../../assets/small_radio.png" alt="Radio Picture">
+            {{ channel.name }}
+
+          </h1>
+
+          <p>{{ channel.description }}</p>
+
+
+          <strong>{{ channel.type }}</strong>
+
+        </li>
+
+      </ul>
+
   </div>
 </div>

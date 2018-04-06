@@ -5,34 +5,36 @@
   </div>
 
   <div class="color-dark">
-    <form class="register-pane" action="index.html" method="post">
+
+    <form class="register-pane" (ngSubmit)="onSubmit(fm)" #fm="ngForm">
 
       <div>
         <p class="inner log-labels">Enter username:</p>
-        <input class="txt inner" type="text" name="username" value="" placeholder="Your username.">
+        <input class="txt inner" type="text" ngModel name="username" placeholder="Your username.">
       </div>
 
       <div>
         <p class="inner log-labels">Enter password:</p>
-        <input class="txt inner" type="password" name="password" value="" placeholder="Your password.">
+        <input class="txt inner" type="password" ngModel name="password" placeholder="Your password.">
       </div>
 
       <div>
         <p class="inner log-labels">Repeat password</p>
-        <input class="txt inner" type="password" name="re-password" value="" placeholder="Re-enter password.">
+        <input class="txt inner" type="password" ngModel name="re-password" placeholder="Re-enter password.">
       </div>
 
       <div>
         <p class="inner log-labels">Set a password hint:</p>
-        <input class="txt inner" type="text" name="pw_hint" value="" placeholder="In case you'd forget it.">
+        <input class="txt inner" type="text" ngModel name="pw_hint" placeholder="In case you'd forget it.">
       </div>
 
       <div class="centrify">
-        <input class="btn btn-login" name="" value="Register" (click)="redirLogin()" > <!-- type="submit" -->
-        <input class="btn btn-cancel" name="" value="Cancel" (click)="redirLogin()">
+        <input class="btn" value="Register" type="submit">
+        <strong><a class="cancel" href="" routerLink='/login' routerLinkActive="active">Cancel.</a></strong>
       </div>
 
     </form>
+
   </div>
 
 </div>

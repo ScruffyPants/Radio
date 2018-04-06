@@ -1,12 +1,12 @@
-<nav  *ngIf="globals.isLogged">
+<nav  *ngIf="globals.isLogged" flex layout="column">
 
   <a class="acc_link" href="" routerLink='/home' routerLinkActive="active"><img id="radio_logo" src="../../assets/Radio_logo.gif" alt="Radio logo"></a>
 
   <ul class="menu">
 
     <li><a class="acc_link" href="" routerLink='/search' routerLinkActive="active">Search</a></li>
-    <li><a class="acc_link" href="" routerLink='/player' routerLinkActive="active">Radio Player</a></li>
     <li><a class="acc_link" href="" routerLink='/channel' routerLinkActive="active">New Channel</a></li>
+    <li><a class="acc_link" href="" routerLink='/player' routerLinkActive="active">Radio Player</a></li>
     <li class="blank-space"></li>
     <li><a class="acc_link" href="" routerLink='/profile' routerLinkActive="active">Profile</a></li>
     <li><a class="acc_link" href="" routerLink='/login' routerLinkActive="active" (click)="logOut()">Logout</a></li>

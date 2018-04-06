@@ -1,7 +1,7 @@
 import {trigger, state, animate, style, transition} from '@angular/core';
 
 export function routerTransition() {
-  return slideToLeft();
+  return slideToBottom();
 }
 
 function slideToRight() {
@@ -44,7 +44,7 @@ function slideToBottom() {
     ]),
     transition(':leave', [
       style({transform: 'translateY(0%)'}),
-      animate('0.5s ease-in-out', style({transform: 'translateY(100%)'}))
+      animate('0.5s ease-in-out', style({transform: 'translateY(100%)', opacity: 0}))
     ])
   ]);
 }

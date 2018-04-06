@@ -2,8 +2,10 @@
 @import url('https://fonts.googleapis.com/css?family=Raleway:300,700');
 
 body {
-  background: rgb(45, 35, 40);
+  height:100%;
+  background: #2d2328;
   padding: 3em 0 0 0;
+  margin-top: -3em;
   font-family: 'Raleway', 'Arial';
   color: #fff;
   overflow: hidden;
@@ -16,8 +18,13 @@ a {
 }
 
 .main-container {
-  margin-top: -98em;
+  margin-top: -100vh;
   margin-left: 16em;
+}
+
+.content {
+  margin-top: 60px;
+  margin-left: 10px;
 }
 
 .page-title {

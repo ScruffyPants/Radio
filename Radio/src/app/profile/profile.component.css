@@ -1,10 +1,14 @@
-
+.page-title {
+  margin-left: 3.5em;
+}
 .formdiv {
-  margin-top: 5em;
-  
+  margin-top: 2em;
+  padding: 2em 5em;
+  border: 5px solid yellow;
+  width: 500px;
 }
 .form-control {
-  margin: 1em 0;
+  margin: 1em 1em;
 }
 p {
   margin: 1em 0.6em;
@@ -24,7 +28,7 @@ input.btn {
     padding:0.2em 3em;
     background:#441799;
     cursor:pointer;
-    margin: 2em auto;
+    margin: 2em 7em;
     width: 10em;
     /* border */
     border-color: #5429a6;
