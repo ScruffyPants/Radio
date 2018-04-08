@@ -12,6 +12,8 @@ import { Globals } from '../globals';
 })
 export class ProfileComponent implements OnInit {
 
+  repeatPassword: boolean = false;
+
   constructor(private router: Router, private globals: Globals) {
     if (!this.globals.isLogged) {
       router.navigate(['login']);
@@ -19,6 +21,14 @@ export class ProfileComponent implements OnInit {
   }
 
   ngOnInit() {
+  }
+
+  onSubmit(form){}
+
+  showRePw() {
+
+    this.repeatPassword = true;
+
   }
 
 }

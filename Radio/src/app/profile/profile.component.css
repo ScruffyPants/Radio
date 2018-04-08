@@ -1,9 +1,10 @@
 .page-title {
   margin-left: 3.5em;
+  margin-bottom: 0.4em;
 }
 .formdiv {
-  margin-top: 2em;
-  padding: 2em 5em;
+  margin-top: 0.5em;
+  padding: 1em 5em;
   border: 5px solid yellow;
   width: 500px;
 }
@@ -28,7 +29,7 @@ input.btn {
     padding:0.2em 3em;
     background:#441799;
     cursor:pointer;
-    margin: 2em 7em;
+    margin: 1em 7em;
     width: 10em;
     /* border */
     border-color: #5429a6;

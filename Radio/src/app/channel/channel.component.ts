@@ -31,6 +31,8 @@ export class ChannelComponent implements OnInit {
     ngOnInit() {
     }
 
+    onSubmit(form){}
+
     public getJSON(): Observable<any> {
           return this.http.get("../../assets/genres.json")
     }

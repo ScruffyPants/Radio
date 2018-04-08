@@ -6,16 +6,21 @@
 
     <div class="formdiv">
 
-      <form class="" action="index.html" method="post">
+      <form  (ngSubmit)="onSubmit(fm)" #fm="ngForm">
 
         <div class="form-control">
           <p>Change username:</p>
-          <input type="text" name="new_usr" value="">
+          <input type="text" ngModel name="new_usr" value="">
         </div>
 
         <div class="form-control">
           <p>Change password:</p>
-          <input type="text" name="new_pw" value="">
+          <input type="text" ngModel name="new_pw" value="" [(ngModel)]="new_pw" (click)="showRePw()">
+        </div>
+
+        <div class="form-control" *ngIf="repeatPassword">
+          <p>Repeat password:</p>
+          <input type="text" ngModel name="re_pw">
         </div>
 
         <div class="form-control">

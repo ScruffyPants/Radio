@@ -1,34 +1,41 @@
 .page-title {
   margin-left: 2.1em;
+  margin-bottom: 0.4em;
 }
 .formdiv {
-  margin-top: 2em;
-  padding: 2em 5em;
+  margin-top: 0em;
+  padding: 0.5em 5em;
   border: 5px solid yellow;
   width: 500px;
 }
 .form-control {
-  margin: 1em -1em;
+  margin: 0.5em 0;
+  text-align: center;
 }
-p {
-  margin: 1em 0.6em;
-  display: inline-block;
-  vertical-align: middle;
-  width: 10em;
-  text-align: right;
-}
+
+textarea { resize: none; }
+
 input {
     border: 0;
     border-radius: 4px;
     padding: .4em;
     width: 16em;
 }
+
+select {
+  border: 0;
+  border-radius: 4px;
+  padding: .3em;
+  width: 17em;
+  text-align: center;
+}
+
 input.btn {
     display:block;
     padding:0.2em 3em;
     background:#441799;
     cursor:pointer;
-    margin: 2em 9em;
+    margin: 1em auto;
     width: 10em;
     /* border */
     border-color: #5429a6;
@@ -42,4 +49,11 @@ input.btn {
 input.btn:hover {
   background: #2d037b;
   border-color: #380f86;
+}
+
+label {
+  display: block;
+  min-width: 50px;
+  margin-right: 20px;
+  margin: 0.8em auto 0.3em auto;
 }
