@@ -3,10 +3,20 @@ import { Router } from '@angular/router';
 import { routerTransition } from '../router.animations';
 import { trigger,style,transition,animate,keyframes,query,stagger } from '@angular/animations';
 
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
+
+import { tap, catchError } from 'rxjs/operators';
+import { of } from 'rxjs/observable/of';
 import { Globals } from '../globals';
 
+
+const httpOptions = {
+  headers: new HttpHeaders({
+    'Accept': 'application/json',
+    'Authorization': 'Bearer dT68xqvRdPhTAKl1bMai8TzHQhuAgORRpIJQkX5V'
+  })
+}
 
 @Component({
   selector: 'login',
@@ -18,45 +28,24 @@ import { Globals } from '../globals';
 
 export class LoginComponent implements OnInit {
 
-  isHidden: boolean = true;
+
   input_usr: string = 'username';
   input_pw: string = 'password';
-  test: string;
-  users: object = [];
+  constructor(private router: Router, private globals: Globals, private http: HttpClient) { }
 
-  constructor(private router: Router, private globals: Globals, private http: HttpClient) {
-
-    this.getJSON().subscribe(data => {this.users = data;});
-
-  }
-
-  ngOnInit() {
-    console.log(this.globals.isLogged);
-  }
+  ngOnInit() { }
 
   onSubmit(form){
 
-    let correct = 0;
+    this.http.post('http://localhost:8000/api/login',
+      {
+        email: form.value.username,
+        password: form.value.password
+      }, httpOptions).subscribe(res => {
+          console.log(res);
+          this.globals.isLogged = true;
+          this.router.navigate(['home']);
+        });
 
-    for( let user in this.users ){
-      if ( this.users[user].username == form.value.username &&
-        this.users[user].password == form.value.password )
-          {
-            this.globals.isLogged = true;
-            correct = 1;
-            this.router.navigate(['home']);
-          }
-    }
-
-    if ( this.globals.isLogged == false && correct == 0 ){
-      this.input_usr = "";
-      this.input_pw = "";
-      alert("Bad credentials");
-    }
   }
-
-  public getJSON(): Observable<any> {
-        return this.http.get("../../assets/users.json")
-  }
-
 }

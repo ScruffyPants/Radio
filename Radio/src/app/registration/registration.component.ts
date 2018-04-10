@@ -8,9 +8,10 @@ import { Globals } from '../globals';
 
 const httpOptions = {
   headers: new HttpHeaders({
-    'Content-Type':  'application/json'
+    'Accept': 'application/json',
+    'Authorization': 'Bearer '//.$accessToken
   })
-};
+}
 
 @Component({
   selector: 'app-registration',
@@ -29,16 +30,17 @@ export class RegistrationComponent implements OnInit {
 
   onSubmit(form){
 
-    console.log(form.value.username);
-
-    this.router.navigate(['login']);
-
-    // this.http.post("laukiam duombazes",
-    //   {
-    //     username: form.value.username,
-    //     password: form.value.password
-    //   }
-    //   , httpOptions).subscribe((data) => {});
+    this.http.post('http://localhost:8000/api/register',
+      {
+        name: 'Boi',
+        email: form.value.username,
+        password: form.value.password,
+        c_password: form.value.c_password
+      }, httpOptions).subscribe(res => {
+            console.log(res);
+            this.globals.isLogged = true;
+            this.router.navigate(['home']);
+          });
 
   }
 

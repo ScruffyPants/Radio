@@ -6,7 +6,7 @@
 
   <div class="color-dark">
 
-    <form class="register-pane" (ngSubmit)="onSubmit(fm)" #fm="ngForm">
+    <form (ngSubmit)="onSubmit(fm)" #fm="ngForm" class="register-pane">
 
       <div>
         <p class="inner log-labels">Enter username:</p>
@@ -20,7 +20,7 @@
 
       <div>
         <p class="inner log-labels">Repeat password</p>
-        <input class="txt inner" type="password" ngModel name="re-password" placeholder="Re-enter password.">
+        <input class="txt inner" type="password" ngModel name="c_password" placeholder="Re-enter password.">
       </div>
 
       <div>
