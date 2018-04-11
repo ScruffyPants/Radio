@@ -17,8 +17,8 @@ class UsersTableSeeder extends Seeder
         //this is a ghetto manual "factory"
         for($i = 0; $i < 10; $i++) {
             DB::table('users')->insert([
-                'name' => str_random(5),
-                'email' => str_random(10) . '@gmail.com',
+                'username' => str_random(5),
+                //'email' => str_random(10) . '@gmail.com',
                 'password' => "password",
             ]);
         }
