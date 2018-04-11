@@ -46,6 +46,10 @@ class LoginController extends Controller
             return response()->json(['error'=>$validator->errors()], 401);
         }
 
+        if(User::where('username','=',$request['username'])->first() != null){
+            return response()->json(['error'=>'Username already taken'], 401);
+        }
+
         $input = $request->all();
         $input['password'] = bcrypt($input['password']);
         $user = User::create($input);
