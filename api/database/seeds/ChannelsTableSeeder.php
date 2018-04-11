@@ -15,7 +15,8 @@ class ChannelsTableSeeder extends Seeder
 
         for($i=0; $i<10; $i++){
             DB::table('channels')->insert([
-                'name' => str_random(5)
+                'name' => str_random(5),
+                'description' => str_random(20)
             ]);
         }
     }
