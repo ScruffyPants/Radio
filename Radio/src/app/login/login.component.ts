@@ -10,14 +10,6 @@ import { tap, catchError } from 'rxjs/operators';
 import { of } from 'rxjs/observable/of';
 import { Globals } from '../globals';
 
-
-const httpOptions = {
-  headers: new HttpHeaders({
-    'Accept': 'application/json',
-    'Authorization': 'Bearer dT68xqvRdPhTAKl1bMai8TzHQhuAgORRpIJQkX5V'
-  })
-}
-
 @Component({
   selector: 'login',
   templateUrl: './login.component.html',
@@ -28,7 +20,7 @@ const httpOptions = {
 
 export class LoginComponent implements OnInit {
 
-
+  cookieValue = 'UNKNOWN';
   input_usr: string = 'username';
   input_pw: string = 'password';
   constructor(private router: Router, private globals: Globals, private http: HttpClient) { }
@@ -39,13 +31,14 @@ export class LoginComponent implements OnInit {
 
     this.http.post('http://localhost:8000/api/login',
       {
-        email: form.value.username,
+        username: form.value.username,
         password: form.value.password
-      }, httpOptions).subscribe(res => {
-          console.log(res);
-          this.globals.isLogged = true;
+      }).subscribe(res => {
+          console.log(res)
+          this.globals['accessToken'] = res['success'].token;
+          this.globals['isLogged'] = true;
           this.router.navigate(['home']);
-        });
+        }, error => alert(error.error.error + '. Wrong credentials!'));
 
   }
 }

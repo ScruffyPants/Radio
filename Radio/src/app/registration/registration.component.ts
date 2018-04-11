@@ -6,13 +6,6 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 import { Globals } from '../globals';
 
-const httpOptions = {
-  headers: new HttpHeaders({
-    'Accept': 'application/json',
-    'Authorization': 'Bearer '//.$accessToken
-  })
-}
-
 @Component({
   selector: 'app-registration',
   templateUrl: './registration.component.html',
@@ -32,14 +25,17 @@ export class RegistrationComponent implements OnInit {
 
     this.http.post('http://localhost:8000/api/register',
       {
-        name: 'Boi',
-        email: form.value.username,
+        username: form.value.username,
         password: form.value.password,
         c_password: form.value.c_password
-      }, httpOptions).subscribe(res => {
+      }).subscribe(res => {
             console.log(res);
-            this.globals.isLogged = true;
+            this.globals['accessToken'] = res['success'].token;
+            this.globals['isLogged'] = true;
             this.router.navigate(['home']);
+          }, error => {
+            if(error.error.error=="Username already taken") alert(error.error.error + '. Wrong credentials!')
+            else alert(error.error.error.c_password)
           });
 
   }
