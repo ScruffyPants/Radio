@@ -23,4 +23,6 @@ Route::post('register', 'LoginController@register') -> name('register');
 
 Route::group(['middleware' => 'auth:api'], function(){
     Route::post('get-details', 'LoginController@getDetails');
+
+    Route::post('get-channels', 'ChannelController@getChannels');
 });
