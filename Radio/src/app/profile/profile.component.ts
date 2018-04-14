@@ -13,6 +13,7 @@ import { AuthService } from '../auth.service';
 export class ProfileComponent implements OnInit {
 
   repeatPassword: boolean = false;
+  generated_token: string = '';
 
   constructor(private router: Router, private authService: AuthService) { }
 
@@ -21,5 +22,9 @@ export class ProfileComponent implements OnInit {
   onSubmit(form){}
 
   showRePw() { this.repeatPassword = true }
+
+  showToken() {
+    this.generated_token = (Math.random().toString(36)+'00000000000000000').slice(2, 12);
+  }
 
 }

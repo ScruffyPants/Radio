@@ -42,12 +42,16 @@ class LoginController extends Controller
             'c_password' => 'required|same:password',
         ]);
 
-        if ($validator->fails()) {
-            return response()->json(['error'=>$validator->errors()], 401);
+        if($request['password']!=$request['c_password']){
+            return response()->json(['error'=>'The password and the repeated password do not match.'], 412);
         }
 
         if(User::where('username','=',$request['username'])->first() != null){
-            return response()->json(['error'=>'A user with this username already exists.'], 401);
+            return response()->json(['error'=>'A user with this username already exists.'], 409);
+        }
+
+        if ($validator->fails()) {
+            return response()->json(['error'=>'An error occured. Please check the input data.'], 406); //validator->errors()], 412);
         }
 
         $input = $request->all();

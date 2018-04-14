@@ -1,12 +1,17 @@
+<div class="spinnerP" *ngIf="spinner"><img id="spinnerP" src="../../assets/spinner.gif"></div>
 
-<div class="main-container">
+<div class="main-container" *ngIf="!spinner">
+
   <div class="channels-number">
     Number of Channels: <strong>{{channels.length}}</strong>
   </div>
+
   <div>
+
       <div class="fastName" id="temp" *ngIf="tempDiv">
         {{ tempName }}
       </div>
+
       <ul>
         <li *ngFor="let channel of channels; let i = index" (click)="showChannel(i)">
 
@@ -17,7 +22,6 @@
           </h1>
 
           <p>{{ channel.description }}</p>
-
 
           <strong>{{ channel.type }}</strong>
 

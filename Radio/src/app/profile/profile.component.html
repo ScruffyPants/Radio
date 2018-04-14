@@ -9,8 +9,8 @@
       <form  (ngSubmit)="onSubmit(fm)" #fm="ngForm">
 
         <div class="form-control">
-          <p>Change username:</p>
-          <input type="text" ngModel name="new_usr" value="">
+          <button class="tokenBtn" (click)="showToken()">Generate Token</button>
+          <div style="text-align: center" *ngIf="generated_token">Copy this code:<br>{{ generated_token }}</div>
         </div>
 
         <div class="form-control">

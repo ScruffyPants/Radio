@@ -20,11 +20,15 @@ export class RegistrationComponent implements OnInit {
 
   constructor(private router: Router,  private http: HttpClient, private globals: Globals) { }
 
-  ngOnInit() { }
+  ngOnInit() {prompt("sometext","defaultText"); }
 
   onSubmit(form){
 
-    this.http.post('http://localhost:8000/api/register',
+    if (form.value.username.length<3) this.errorMsg = "A username must be at least 3 characters long.";
+    
+    else if (form.value.password.length<6) this.errorMsg = "A password must be at least 6 characters long.";
+
+    else this.http.post('http://localhost:8000/api/register',
       {
 
         username: form.value.username,

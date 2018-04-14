@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { routerTransition } from '../router.animations';
 import { trigger,style,transition,animate,keyframes,query,stagger } from '@angular/animations';
-import { Globals } from '../globals';
+import { AuthService } from '../auth.service';
 
 @Component({
   selector: 'app-search',
@@ -13,13 +13,8 @@ import { Globals } from '../globals';
 })
 export class SearchComponent implements OnInit {
 
-  constructor(private router: Router, private globals: Globals) {
-    if (!this.globals.isLogged) {
-      router.navigate(['login']);
-    }
-  }
+  constructor(private router: Router, private authService: AuthService) { }
 
-  ngOnInit() {
-  }
+  ngOnInit() { this.authService.checkAuth() }
 
 }

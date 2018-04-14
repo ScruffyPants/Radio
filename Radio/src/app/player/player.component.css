@@ -84,3 +84,10 @@ ul li strong {
   padding: 0;
   margin: 0 0.4em -0.3em 0;
 }
+
+.spinnerP {
+  position: absolute;
+  top: -80vh;
+  left: 35%;
+  filter: drop-shadow(0 0 2px pink);
+}
