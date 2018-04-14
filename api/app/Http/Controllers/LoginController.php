@@ -47,7 +47,7 @@ class LoginController extends Controller
         }
 
         if(User::where('username','=',$request['username'])->first() != null){
-            return response()->json(['error'=>'Username already taken'], 401);
+            return response()->json(['error'=>'A user with this username already exists.'], 401);
         }
 
         $input = $request->all();

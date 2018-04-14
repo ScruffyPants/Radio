@@ -5,6 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
+import { NgHttpLoaderModule } from 'ng-http-loader/ng-http-loader.module';
 
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
@@ -15,8 +16,11 @@ import { ProfileComponent } from './profile/profile.component';
 import { SearchComponent } from './search/search.component';
 import { PlayerComponent } from './player/player.component';
 import { ChannelComponent } from './channel/channel.component'
+import { ErrorMsgComponent } from './error-msg/error-msg.component';
 
+import { AuthService } from './auth.service';
 import { Globals } from './globals';
+
 
 @NgModule({
   declarations: [
@@ -28,16 +32,18 @@ import { Globals } from './globals';
     ProfileComponent,
     SearchComponent,
     PlayerComponent,
-    ChannelComponent
+    ChannelComponent,
+    ErrorMsgComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
+    NgHttpLoaderModule,
     AppRoutingModule,
     FormsModule,
     BrowserAnimationsModule
   ],
-  providers: [ Globals ],
+  providers: [ Globals, AuthService ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

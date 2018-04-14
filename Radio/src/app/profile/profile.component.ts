@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { routerTransition } from '../router.animations';
-import { Globals } from '../globals';
+import { AuthService } from '../auth.service';
 
 @Component({
   selector: 'app-profile',
@@ -14,21 +14,12 @@ export class ProfileComponent implements OnInit {
 
   repeatPassword: boolean = false;
 
-  constructor(private router: Router, private globals: Globals) {
-    if (!this.globals.isLogged) {
-      router.navigate(['login']);
-    }
-  }
+  constructor(private router: Router, private authService: AuthService) { }
 
-  ngOnInit() {
-  }
+  ngOnInit() { this.authService.checkAuth() }
 
   onSubmit(form){}
 
-  showRePw() {
-
-    this.repeatPassword = true;
-
-  }
+  showRePw() { this.repeatPassword = true }
 
 }

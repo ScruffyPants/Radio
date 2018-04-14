@@ -14,7 +14,8 @@ export class NavbarComponent implements OnInit {
   }
 
   logOut() {
-    this.globals.isLogged = false;
+    this.globals['isLogged'] = false;
+    this.globals['accessToken'] = '';
   }
 
 }

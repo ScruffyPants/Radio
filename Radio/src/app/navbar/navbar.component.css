@@ -51,7 +51,10 @@ nav ul li .acc_link {
 }
 
 @media only screen and (min-height: 850px) {
-	.blank-space {
-		height: 45vh;
-	}
+  nav ul {
+    margin-top: 2em;
+  }
+  nav ul li {
+    padding-top: 2em;
+  }
 }
