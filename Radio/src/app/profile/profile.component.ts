@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { routerTransition } from '../router.animations';
 import { AuthService } from '../auth.service';
+import { Globals } from '../globals';
 
 @Component({
   selector: 'app-profile',
@@ -13,9 +14,9 @@ import { AuthService } from '../auth.service';
 export class ProfileComponent implements OnInit {
 
   repeatPassword: boolean = false;
-  generated_token: string = '';
+  channelToken: string = '';
 
-  constructor(private router: Router, private authService: AuthService) { }
+  constructor(private router: Router, private authService: AuthService, private globals: Globals) { }
 
   ngOnInit() { this.authService.checkAuth() }
 
@@ -24,7 +25,8 @@ export class ProfileComponent implements OnInit {
   showRePw() { this.repeatPassword = true }
 
   showToken() {
-    this.generated_token = (Math.random().toString(36)+'00000000000000000').slice(2, 12);
+    this.globals['channel_token'] = (Math.random().toString(36)+'00000000000000000').slice(2, 12);
+    this.channelToken = this.globals['channel_token'];
   }
 
 }

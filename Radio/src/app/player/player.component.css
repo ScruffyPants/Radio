@@ -1,7 +1,7 @@
 .channels-number {
   position: absolute;
   transform: rotate(-90deg);
-  margin-top: 74vh;
+  margin-top: 70vh;
   left: 5em;
   color: white;
   font-size: 1.5em;
@@ -90,4 +90,34 @@ ul li strong {
   top: -80vh;
   left: 35%;
   filter: drop-shadow(0 0 2px pink);
+}
+
+.audioPlayer {
+  padding-top: 0.5em;
+  padding-bottom: 0.5em;
+  margin-left: -2.75em;
+  background: #390606;
+  border-bottom: solid 1px #63000;
+}
+
+.audioText {
+  font-size: 1.5em;
+  padding-left: 1em;
+  margin-bottom: 0.5em;
+}
+
+audio {
+  width: 40%;
+  margin-bottom: -8px;
+  float: right;
+}
+
+audio::-webkit-media-controls-panel {
+	background: #390606;
+  border-radius: 0;
+}
+
+audio::-webkit-media-controls-play-button,
+audio::-webkit-media-controls-mute-button {
+	color: white;
 }
