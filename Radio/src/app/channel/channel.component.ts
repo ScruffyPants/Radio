@@ -6,6 +6,7 @@ import { trigger,style,transition,animate,keyframes,query,stagger } from '@angul
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 import { AuthService } from '../auth.service';
+import { Globals } from '../globals';
 
 @Component({
   selector: 'app-channel',
@@ -18,7 +19,7 @@ export class ChannelComponent implements OnInit {
 
     public genres: object = [];
 
-    constructor(private router: Router, private http: HttpClient, private authService: AuthService) { }
+    constructor(private router: Router, private http: HttpClient, private authService: AuthService, private globals: Globals) { }
 
     ngOnInit() {
       this.authService.checkAuth();

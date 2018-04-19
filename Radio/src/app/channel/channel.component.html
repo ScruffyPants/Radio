@@ -14,15 +14,21 @@
         </div>
 
         <div class="form-control">
-          <label for="genre">Genre</label>
-          <select ngModel name="genre" id="genre">
-            <option *ngFor="let genre of genres" value="{{ genre.genre }}">{{ genre.genre }}</option>
-          </select>
+
+          <div style="display:inline-block">
+            <label for="genre">Genre</label>
+            <select ngModel name="genre" id="genre">
+              <option *ngFor="let genre of genres" value="{{ genre.genre }}">{{ genre.genre }}</option>
+            </select>
+          </div>
+
+          <div style="display:inline-block">
+            <label for="title">Token</label>
+            <input type="text" disabled [(ngModel)]="globals['channel_token']" name="channelToken" id="channelToken" alt="Submit">
+          </div>
+
         </div>
 
-        <div class="form-control">
-
-        </div>
 
         <div class="form-control">
           <label for="descr">Description</label>
