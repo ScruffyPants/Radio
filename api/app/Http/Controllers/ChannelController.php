@@ -11,4 +11,12 @@ class ChannelController extends Controller
     public function getChannels(){
         return new Channels(Channel::all());
     }
+
+    public function getStreamKey(){
+
+    }
+
+    public function authStream(Request $request){
+        error_log($request);
+    }
 }
