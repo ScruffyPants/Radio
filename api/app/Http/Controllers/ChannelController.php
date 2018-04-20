@@ -34,6 +34,7 @@ class ChannelController extends Controller
 
             $key = md5(microtime().rand());
             $channel->name = $key;
+            $channel->description = "NULL";
 
             $channel->save();
             return $key;
@@ -46,15 +47,20 @@ class ChannelController extends Controller
         $password = $request['pass'];
         $mount = ltrim($request['mount'],'/');
 
-        if(User::where('name', $username)->first() != null && $mount == $username){
-            $id = User::select('id')->where('name', $username)->first()->id;
+        error_log($mount);
+        error_log($password);
+        error_log($username);
+
+        if(User::where('username', $username)->first() != null && $mount == $username){
+            $id = User::select('id')->where('username', $username)->first()->id;
             error_log($id);
             $key = Channel::select('name')->where('id', $id)->first()->name;
             if($key == $password){
-                return response() -> json() -> header('icecast-auth-user','1');
+                error_log('Success');
+                return response() -> json() -> header('icecast-auth-user:1','');
             }
         }
 
-        return response() -> json() -> header('icecast-auth-user','0');
+        return response() -> json() -> header('icecast-auth-user:0','');
     }
 }

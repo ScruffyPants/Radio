@@ -187,12 +187,8 @@
     </mount>
     -->
     
-    <mount>
-        <mount-name>/test2</mount-name>
-        
-        <username>test</username>
-        <password>test</password>
-        
+    <mount type="default">
+        <!-- <mount-name>/Test</mount-name> -->
         <authentication type="url">
             <option name="stream_auth" value="http://localhost:8000/api/auth_stream"/>       
             <option name="auth_header" value="icecast-auth-user:1"/>
