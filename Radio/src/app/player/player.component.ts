@@ -27,7 +27,7 @@ export class PlayerComponent implements OnInit {
       this.http.post('http://localhost:8000/api/get-channels',null,{headers: this.authService.checkAuth()})
         .subscribe(data => {
           this.channels = data['data'];
-          setTimeout(() => { this.spinner = false; }, 100);
+          setTimeout(() => { this.spinner = false; }, 50);
         }, (err: HttpErrorResponse) => { console.log(err['error'].message) });
     }
 

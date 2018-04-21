@@ -19,8 +19,8 @@
         <client-timeout>30</client-timeout>
         <header-timeout>15</header-timeout>
         <source-timeout>10</source-timeout>
-        <!-- If enabled, this will provide a burst of data when a client 
-             first connects, thereby significantly reducing the startup 
+        <!-- If enabled, this will provide a burst of data when a client
+             first connects, thereby significantly reducing the startup
              time for listeners that do substantial buffering. However,
              it also significantly increases latency between the source
              client and listening client.  For low-latency setups, you
@@ -82,13 +82,13 @@
     -->
 
 
-    <!-- Global header settings 
+    <!-- Global header settings
          Headers defined here will be returned for every HTTP request to Icecast.
 
          The ACAO header makes Icecast public content/API by default
          This will make streams easier embeddable (some HTML5 functionality needs it).
          Also it allows direct access to e.g. /status-json.xsl from other sites.
-         If you don't want this, comment out the following line or read up on CORS. 
+         If you don't want this, comment out the following line or read up on CORS.
     -->
     <http-headers>
         <header name="Access-Control-Allow-Origin" value="*" />
@@ -129,7 +129,7 @@
 
     <!-- Default settings for all mounts that don't have a specific <mount type="normal">.
     -->
-    <!-- 
+    <!--
     <mount type="default">
         <public>0</public>
         <intro>/server-wide-intro.ogg</intro>
@@ -186,11 +186,11 @@
         </authentication>
     </mount>
     -->
-    
+
     <mount type="default">
         <!-- <mount-name>/Test</mount-name> -->
         <authentication type="url">
-            <option name="stream_auth" value="http://localhost:8000/api/auth_stream"/>       
+            <option name="stream_auth" value="http://localhost:8000/api/auth_stream"/>
             <option name="auth_header" value="icecast-auth-user:1"/>
         </authentication>
     </mount>
@@ -199,13 +199,13 @@
 
     <paths>
         <!-- basedir is only used if chroot is enabled -->
-        <basedir>/usr/share/icecast</basedir>
+        <basedir>C:/Program Files (x86)/Icecast/</basedir>
 
         <!-- Note that if <chroot> is turned on below, these paths must both
              be relative to the new root, not the original root -->
-        <logdir>/var/log/icecast</logdir>
-        <webroot>/usr/share/icecast/web</webroot>
-        <adminroot>/usr/share/icecast/admin</adminroot>
+        <logdir>C:/Program Files (x86)/Icecast/log</logdir>
+        <webroot>C:/Program Files (x86)/Icecast/web</webroot>
+        <adminroot>C:/Program Files (x86)/Icecast/admin</adminroot>
         <!-- <pidfile>/usr/share/icecast/icecast.pid</pidfile> -->
 
         <!-- Aliases: treat requests for 'source' path as being for 'dest' path
