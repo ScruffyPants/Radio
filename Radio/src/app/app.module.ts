@@ -14,12 +14,13 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { RegistrationComponent } from './registration/registration.component';
 import { ProfileComponent } from './profile/profile.component';
 import { SearchComponent } from './search/search.component';
-import { PlayerComponent } from './player/player.component';
-import { ChannelComponent } from './channel/channel.component'
+import { radioPlayerComponent } from './radioPlayer/radioPlayer.component';
+import { createChannelComponent } from './createChannel/createChannel.component'
 import { ErrorMsgComponent } from './error-msg/error-msg.component';
 
 import { AuthService } from './auth.service';
 import { Globals } from './globals';
+import { audioBoxComponent } from './audioBox/audioBox.component';
 
 
 @NgModule({
@@ -31,9 +32,10 @@ import { Globals } from './globals';
     RegistrationComponent,
     ProfileComponent,
     SearchComponent,
-    PlayerComponent,
-    ChannelComponent,
-    ErrorMsgComponent
+    radioPlayerComponent,
+    createChannelComponent,
+    ErrorMsgComponent,
+    audioBoxComponent
   ],
   imports: [
     BrowserModule,

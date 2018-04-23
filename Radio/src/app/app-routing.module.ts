@@ -7,8 +7,9 @@ import { RegistrationComponent } from './registration/registration.component';
 import { HomeComponent } from './home/home.component';
 import { ProfileComponent } from './profile/profile.component';
 import { SearchComponent } from './search/search.component';
-import { PlayerComponent } from './player/player.component';
-import { ChannelComponent } from './channel/channel.component'
+import { radioPlayerComponent } from './radioPlayer/radioPlayer.component';
+import { createChannelComponent } from './createChannel/createChannel.component';
+import { audioBoxComponent } from './audioBox/audioBox.component';
 
 
 const routes: Routes = [
@@ -39,11 +40,15 @@ const routes: Routes = [
   },
   {
     path: 'channel',
-    component: ChannelComponent
+    component: createChannelComponent
   },
   {
     path: 'player',
-    component: PlayerComponent
+    component: radioPlayerComponent
+  },
+  {
+    path: 'testing',
+    component: audioBoxComponent
   },
   {
     path: '**',

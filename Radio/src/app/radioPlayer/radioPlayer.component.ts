@@ -9,16 +9,16 @@ import { AuthService } from '../auth.service';
 
 @Component({
   selector: 'app-player',
-  templateUrl: './player.component.html',
-  styleUrls: ['./player.component.css'],
+  templateUrl: './radioPlayer.component.html',
+  styleUrls: ['./radioPlayer.component.css'],
   animations: [routerTransition()],
   host: {'[@routerTransition]': ''}
 })
-export class PlayerComponent implements OnInit {
+export class radioPlayerComponent implements OnInit {
 
     public channels: object = [];
     tempDiv: boolean = false;
-    tempName: string;
+    channelTitle: string = '-';
     spinner: boolean = true;
 
     constructor(private router: Router, private http: HttpClient, private authService: AuthService) { }
@@ -31,10 +31,7 @@ export class PlayerComponent implements OnInit {
         }, (err: HttpErrorResponse) => { console.log(err['error'].message) });
     }
 
-    showChannel(i) {
-      // alert(this.channels[i].name);
-      this.tempName = this.channels[i].name;
-      this.tempDiv = true;
-      setTimeout(() => { this.tempDiv = false; }, 600);
+    chooseChannel(i) {
+      this.channelTitle = this.channels[i].name;
     }
 }
