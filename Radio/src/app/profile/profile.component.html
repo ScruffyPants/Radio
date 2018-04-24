@@ -1,6 +1,6 @@
 <div class="main-container">
 
-  <div>
+  <div class="profile-page">
 
     <h1 class="page-title">Profile</h1>
 
@@ -9,7 +9,7 @@
       <form  (ngSubmit)="onSubmit(fm)" #fm="ngForm">
 
         <div class="form-control">
-          <button class="tokenBtn" (click)="showToken()">Generate Token</button>
+          <button class="tokenBtn" type="button" (click)="showToken()">Generate Token</button>
           <div style="text-align: center" *ngIf="channelToken">
             Your token is:<br>
             <strong>{{ channelToken }}</strong>
@@ -19,11 +19,18 @@
         <div class="form-control">
           <p>Change password:</p>
           <input type="text" ngModel name="new_pw" value="" [(ngModel)]="new_pw" (click)="showRePw()">
-        </div>
 
-        <div class="form-control" *ngIf="repeatPassword">
-          <p>Repeat password:</p>
-          <input type="text" ngModel name="re_pw">
+          <div *ngIf="repeatPassword">
+            <p>Repeat password:</p>
+            <input type="text" ngModel name="re_pw">
+            <p>Old password:</p>
+            <input type="text" ngModel name="old_pw">
+          </div>
+
+          <div class="pwError centrify" *ngIf="pwError">
+              {{ pwError }}
+          </div>
+
         </div>
 
         <div class="form-control">
@@ -38,4 +45,8 @@
 
   </div>
 
+</div>
+
+<div class="successBox" *ngIf="successBox">
+  Your password has been successfully changed!
 </div>

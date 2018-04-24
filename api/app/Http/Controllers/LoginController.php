@@ -27,7 +27,7 @@ class LoginController extends Controller
             return response()->json(['success' => $success], $this->successStatus);
         }
         else{
-            return response()->json(['error'=>'Unauthorised'], 401);
+            return response()->json(['error'=>'Unauthorised!'], 401);
         }
     }
     /**
@@ -41,10 +41,19 @@ class LoginController extends Controller
             'username' => 'required',
             'password' => 'required',
             'c_password' => 'required|same:password',
+            'password_hint' => 'required'
         ]);
 
         if($request['password']!=$request['c_password']){
             return response()->json(['error'=>'The password and the repeated password do not match.'], 412);
+        }
+
+        if($request['password']==$request['password_hint']){
+            return response()->json(['error'=>'The hint cannot be the same as your password.'], 412);
+        }
+
+        if(null==$request['password_hint']){
+            return response()->json(['error'=>'Please enter your password hint.'], 412);
         }
 
         if(User::where('username','=',$request['username'])->first() != null){
@@ -78,8 +87,8 @@ class LoginController extends Controller
 
     public function changePassword(Request $request){
         $messages = [
-            'password.required' => 'Please enter current password',
-            'c_password.same' => 'Confirmation password must match new password'
+            'password.required' => 'Please enter the old password.',
+            'c_password.same' => 'Repeated password does not match new password.'
         ];
 
         $validator = Validator::make($request->all(), [
@@ -98,9 +107,9 @@ class LoginController extends Controller
                     $obj_user = User::find($user_id);
                     $obj_user->password = Hash::make($request['new_password']);;
                     $obj_user->save();
-                    return response()->json(['success' => 'successfully changed password']);
+                    return response()->json(['success' => 'Password has been successfully changed.']);
                 } else {
-                    $error = array('current-password' => 'Please enter correct current password');
+                    $error = array('password' => 'Please enter the correct old password.');
                     return response()->json(array('error' => $error), 400);
                 }
             }

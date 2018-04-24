@@ -16,6 +16,8 @@ export class ProfileComponent implements OnInit {
 
   repeatPassword: boolean = false;
   channelToken: string = '';
+  pwError: string;
+  successBox: boolean = false;
 
   constructor(private router: Router, private http: HttpClient, private authService: AuthService, private globals: Globals) { }
 
@@ -27,32 +29,48 @@ export class ProfileComponent implements OnInit {
     }
   }
 
-  onSubmit(form){}
+  onSubmit(form){
+
+    this.http.post('http://localhost:8000/api/change-password',
+      {
+
+        new_password: form.value.new_pw,
+        c_password: form.value.re_pw,
+        password: form.value.old_pw
+
+      }, {headers: this.authService.checkAuth()}).subscribe(res => {
+
+          if (res['success']){
+            this.pwError = null;
+            this.successBox = true;
+            setTimeout(() => { this.successBox = false; }, 1000);
+          }
+
+        }, (err: HttpErrorResponse)=> {
+
+          console.log(err['error'].error);
+          if (err['error'].error.new_password)
+            this.pwError = err['error'].error.new_password;
+          else if (err['error'].error.c_password=="The c password field is required.")
+            this.pwError = "Please enter the confirmation password.";
+          else if (err['error'].error.c_password)
+            this.pwError = err['error'].error.c_password;
+          else if (err['error'].error.password)
+            this.pwError = err['error'].error.password;
+    });
+
+  }
 
   showRePw() { this.repeatPassword = true }
 
   showToken() {
     this.channelToken = "loading..."
 
-    // this.http.post('http://localhost:8000/api/get-streamKey',null,{headers: this.authService.checkAuth()})
-    //   .subscribe(data => {
-    //     this.globals['channel_token'] = data['key'];
-    //     this.channelToken = this.globals['channel_token'];
-    //   }, (err: HttpErrorResponse) => { console.log(err['error'].message) });
-    let promise = new Promise((resolve, reject) => {
-      this.http.post('http://localhost:8000/api/get-streamKey',null,{headers: this.authService.checkAuth()})
-        .toPromise()
-        .then( res => {
-          this.globals['channel_token'] = res['key'];
-          this.channelToken = this.globals['channel_token'];
-          resolve();
-        },
-        msg => {
-          console.log(msg['error'].message);
-          reject(msg);
-        }
-      );
-    });
+    this.http.post('http://localhost:8000/api/get-streamKey',null,{headers: this.authService.checkAuth()})
+      .subscribe(data => {
+        this.globals['channel_token'] = data['key'];
+        this.channelToken = this.globals['channel_token'];
+      }, (err: HttpErrorResponse) => { console.log(err['error'].message) });
 
   }
 

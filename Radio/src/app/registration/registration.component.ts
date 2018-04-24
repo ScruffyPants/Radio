@@ -33,7 +33,8 @@ export class RegistrationComponent implements OnInit {
 
         username: form.value.username,
         password: form.value.password,
-        c_password: form.value.c_password
+        c_password: form.value.c_password,
+        password_hint: form.value.password_hint
 
       }).subscribe(res => {
 

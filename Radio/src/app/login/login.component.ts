@@ -20,6 +20,8 @@ import { Globals } from '../globals';
 
 export class LoginComponent implements OnInit {
 
+  activeHint: boolean = false;
+  passwordHint: string = '';
   errorMsg: string = '';
   input_usr: string = 'username';
   input_pw: string = 'password';
@@ -48,6 +50,25 @@ export class LoginComponent implements OnInit {
 
         });
 
+  }
+
+  showHint() {
+      this.activeHint = true;
+
+      if (this.input_usr!='') {
+        this.http.post('http://localhost:8000/api/get-passwordHint',{username: this.input_usr})
+          .subscribe(res => {
+              if (res[0].password_hint)
+                this.passwordHint = "Hint: "+ res[0].password_hint;
+              else this.passwordHint = 'You have not created any hint.';
+            }, (err: HttpErrorResponse) => {
+              if (err['status']==400)
+                this.passwordHint = 'This user does not exist.';
+            }
+          );
+      }
+
+      else this.passwordHint = 'You must enter a username first.';
   }
 
 }

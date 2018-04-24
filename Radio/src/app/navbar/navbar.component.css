@@ -47,7 +47,7 @@ nav ul li .acc_link {
 }
 
 .blank-space {
-  height: 20vh;
+  height: 30vh;/*  20vh; */
 }
 
 @media only screen and (min-height: 850px) {

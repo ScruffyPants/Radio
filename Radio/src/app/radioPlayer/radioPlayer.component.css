@@ -15,6 +15,7 @@
 
 ul {
     overflow-y: auto;
+    overflow-x: hidden;
     max-height: 100vh;
     list-style: none;
     padding-top: 0.6em;

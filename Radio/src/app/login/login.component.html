@@ -30,9 +30,13 @@
 
         <div class="centrify">
           <input class="btn" type="submit" value="Login">
+          <div class="label_skip" (click)="showHint()">Forgot Password?</div>
           <strong><a class="label_skip" href="" routerLink='/registration' routerLinkActive="active">Register.</a></strong>
         </div>
 
+        <div class="hintMsg centrify" *ngIf="activeHint">
+          {{ passwordHint }}
+        </div>
 
       </form>
 

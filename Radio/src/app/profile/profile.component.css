@@ -1,3 +1,10 @@
+.profile-page {
+  overflow-y: auto;
+  overflow-x: hidden;
+  max-height: 100vh;
+  margin-right: 8px;
+}
+
 .page-title {
   margin-left: 3.5em;
   margin-bottom: 0.4em;
@@ -63,4 +70,20 @@ button.tokenBtn {
 button.tokenBtn:hover {
   background-color: #d04412;
   border-color: #845905;
+}
+
+.pwError {
+  padding: 0.4em 2em;
+  background-color: #df0043;
+  border-radius: 18px;
+}
+
+.successBox {
+  position: absolute;
+  left: 28%;
+  top: -20em;
+  background-color: rgba(31, 157, 0, 0.85);
+  text-align: center;
+  border-radius: 18px;
+  padding: 2em 3em;
 }

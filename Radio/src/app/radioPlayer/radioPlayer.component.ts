@@ -16,7 +16,7 @@ import { AuthService } from '../auth.service';
 })
 export class radioPlayerComponent implements OnInit {
 
-    public channels: object = [];
+    public channels: any;
     tempDiv: boolean = false;
     channelTitle: string = '-';
     spinner: boolean = true;
@@ -26,12 +26,12 @@ export class radioPlayerComponent implements OnInit {
     ngOnInit() {
       this.http.post('http://localhost:8000/api/get-channels',null,{headers: this.authService.checkAuth()})
         .subscribe(data => {
-          this.channels = data['data'];
+          this.channels = data;
           setTimeout(() => { this.spinner = false; }, 50);
         }, (err: HttpErrorResponse) => { console.log(err['error'].message) });
     }
 
     chooseChannel(i) {
-      this.channelTitle = this.channels[i].name;
+      this.channelTitle = this.channels[i].server_name;
     }
 }

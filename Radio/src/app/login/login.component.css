@@ -48,7 +48,16 @@
   width: 120px;
 }
 .label_skip:hover{
+  cursor: pointer;
   text-decoration: underline;
+}
+
+.hintMsg {
+  margin-top: 0.5em;
+  padding: 0.5em;
+  background-color: #779500;
+  border-radius: 18px;
+  font-style: italic;
 }
 
 #radio_logo {
