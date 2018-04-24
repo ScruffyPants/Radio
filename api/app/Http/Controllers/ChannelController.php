@@ -12,7 +12,13 @@ use Symfony\Component\HttpFoundation\Response;
 class ChannelController extends Controller
 {
     public function getChannels(){
-        return new Channels(Channel::all());
+        $client = new \GuzzleHttp\Client();
+        $res = $client->request('GET', 'http://localhost:8020/status-json.xsl');
+        $contents = json_decode($res->getBody()->getContents());
+
+        return json_encode($contents->icestats->source);
+
+        //return new Channels(Channel::all());
     }
 
     public function getStreamKey(){
