@@ -107,4 +107,23 @@ class LoginController extends Controller
         }
     }
 
+    public function getPasswordHint(Request $request){
+        $validator = Validator::make($request->all(), [
+            'username' => 'required'
+        ], [
+            'username.required' => 'Please enter username'
+        ]);
+
+        if($validator->fails()){
+            return response()->json(array('error' => $validator->getMessageBag()->toArray()), 400);
+        }
+
+        if(User::where('username', $request['username'])->count() >= 1){
+            return User::select('password_hint')->where('username', $request['username'])->get();
+        } else {
+            $error = array('username' => 'User with such username not found');
+            return response()->json(array('error' => $error), 400);
+        }
+    }
+
 }

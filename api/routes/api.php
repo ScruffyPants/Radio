@@ -23,6 +23,8 @@ Route::post('register', 'LoginController@register') -> name('register');
 
 Route::post('auth_stream', 'ChannelController@authStream');
 
+Route::post('get-passwordHint', 'LoginController@getPasswordHint');
+
 Route::group(['middleware' => 'auth:api'], function(){
     Route::post('get-details', 'LoginController@getDetails');
 
