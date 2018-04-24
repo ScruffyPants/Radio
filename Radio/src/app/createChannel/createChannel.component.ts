@@ -10,12 +10,12 @@ import { Globals } from '../globals';
 
 @Component({
   selector: 'app-channel',
-  templateUrl: './channel.component.html',
-  styleUrls: ['./channel.component.css'],
+  templateUrl: './createChannel.component.html',
+  styleUrls: ['./createChannel.component.css'],
   animations: [routerTransition()],
   host: {'[@routerTransition]': ''}
 })
-export class ChannelComponent implements OnInit {
+export class createChannelComponent implements OnInit {
 
     public genres: object = [];
 

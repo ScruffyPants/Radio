@@ -1,3 +1,9 @@
+.playerBox {
+  position: absolute;
+  top: -33vh;
+  right: 320px;
+}
+
 .channels-number {
   position: absolute;
   transform: rotate(-90deg);
@@ -7,27 +13,9 @@
   font-size: 1.5em;
 }
 
-.fastName {
-  position: absolute;
-  margin: 12% auto;
-  color: rgb(230, 123, 146);
-  font-weight: bold;
-  padding: 5em auto;
-  font-size: 10em;
-  background-image:
-    radial-gradient(
-      circle,
-      rgb(49, 173, 200),
-      #2d2328
-    );
-    text-align: center;
-    z-index: 1;
-}
-
 ul {
     overflow-y: auto;
     max-height: 100vh;
-
     list-style: none;
     padding-top: 0.6em;
     padding-left: 0.4em;

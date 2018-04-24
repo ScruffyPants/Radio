@@ -32,7 +32,8 @@ class ChannelController extends Controller
             $channel->name = $key;
 
             $channel->save();
-            return $key;
+            
+            return response()->json(['key' => $key]);
         } else {
             //INSERT
             $channel = new Channel;
@@ -43,7 +44,8 @@ class ChannelController extends Controller
             $channel->description = "NULL";
 
             $channel->save();
-            return $key;
+
+            return response()->json(['key' => $key]);
         }
 
     }

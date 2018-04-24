@@ -20,6 +20,7 @@ input {
     border-radius: 4px;
     padding: .4em;
     width: 16em;
+    text-align: center;
 }
 
 select {
@@ -61,4 +62,7 @@ input:disabled {
   text-align: center;
   background-color: #b7acac;
   color: black;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }

@@ -1,0 +1,21 @@
+<div class="audio-player">
+
+  <div class="slider-container" *ngIf="slider">
+    <input id="vol-control" type="range" min="0" max="1" step="0.01" [(ngModel)]="audio" (change)="SetVolume()" class="slider"/>
+  </div>
+
+  <button class="audioBtn playBtn" type="button" *ngIf="!play" (click)="playAudio()"> </button>
+  <button class="audioBtn pauseBtn" type="button" *ngIf="play" (click)="pauseAudio()"> </button>
+
+
+  <button class="audioBtn volumeBtn" type="button" (click)="volSlider()"></button>
+
+
+  <div class="centrify playerLbl">
+    Channel:
+  </div>
+  <div class="playerText">
+     {{ channelTitle }}
+  </div>
+
+</div>

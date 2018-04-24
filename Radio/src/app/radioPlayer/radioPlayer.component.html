@@ -2,15 +2,7 @@
 
 <div class="main-container" *ngIf="!spinner">
 
-<div class="audioPlayer">
-  <label class="audioText">
-    Channel: {{ tempName }}<label *ngIf="!tempName">-</label>
-  </label>
-  <audio controls controlsList="nodownload">
-    <source src="../../assets/csitaly.mp3" type="audio/mp3">
-      Your browser does not support the audio element.
-    </audio>
-</div>
+  <audioBox class="playerBox" [channelTitle]="channelTitle"></audioBox>
 
 
   <div class="channels-number">
@@ -19,12 +11,8 @@
 
   <div>
 
-      <div class="fastName" id="temp" *ngIf="tempDiv">
-        {{ tempName }}
-      </div>
-
       <ul>
-        <li *ngFor="let channel of channels; let i = index" (click)="showChannel(i)">
+        <li *ngFor="let channel of channels; let i = index" (click)="chooseChannel(i)">
 
           <h1>
             <img id="small_radio" src="../../assets/small_radio.png" alt="Radio Picture">
