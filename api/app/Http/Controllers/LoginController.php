@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\User;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 use Validator;
 
 
@@ -72,6 +73,38 @@ class LoginController extends Controller
     {
         $user = Auth::user();
         return response()->json(['success' => $user], $this->successStatus);
+    }
+
+
+    public function changePassword(Request $request){
+        $messages = [
+            'password.required' => 'Please enter current password',
+            'c_password.same' => 'Confirmation password must match new password'
+        ];
+
+        $validator = Validator::make($request->all(), [
+            'password' => 'required',
+            'new_password' => 'required',
+            'c_password' => 'required|same:new_password'
+        ], $messages);
+
+        if(Auth::check()){
+            if($validator->fails()){
+                return response()->json(array('error' => $validator->getMessageBag()->toArray()), 400);
+            } else {
+                $current_password = Auth::user()->password;
+                if(Hash::check($request['password'], $current_password)){
+                    $user_id = Auth::User()->id;
+                    $obj_user = User::find($user_id);
+                    $obj_user->password = Hash::make($request['new_password']);;
+                    $obj_user->save();
+                    return response()->json(['success' => 'successfully changed password']);
+                } else {
+                    $error = array('current-password' => 'Please enter correct current password');
+                    return response()->json(array('error' => $error), 400);
+                }
+            }
+        }
     }
 
 }

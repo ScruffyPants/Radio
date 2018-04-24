@@ -26,6 +26,8 @@ Route::post('auth_stream', 'ChannelController@authStream');
 Route::group(['middleware' => 'auth:api'], function(){
     Route::post('get-details', 'LoginController@getDetails');
 
+    Route::post('change-password', 'LoginController@changePassword');
+
     Route::post('get-channels', 'ChannelController@getChannels');
 
     Route::post('get-streamKey', 'ChannelController@getStreamKey');
