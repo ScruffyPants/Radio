@@ -2,7 +2,7 @@
 
 <div class="main-container" *ngIf="!spinner">
 
-  <audioBox class="playerBox" [channelTitle]="channelTitle"></audioBox>
+  <audioBox class="playerBox" [channelTitle]="channelTitle" [listenURL]="listenURL"></audioBox>
 
 
   <div class="channels-number">
@@ -23,6 +23,8 @@
           <p>{{ channel.server_description }}</p>
 
           <strong>{{ channel.genre }}</strong>
+
+          <em>Listeners: {{ channel.listeners }}</em>
 
         </li>
 

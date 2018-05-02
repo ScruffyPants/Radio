@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, OnChanges, SimpleChanges } from '@angular/core';
 import { radioPlayerComponent } from '../radioPlayer/radioPlayer.component';
 
 var x;
@@ -14,16 +14,25 @@ export class audioBoxComponent implements OnInit {
   play: boolean = false;
   slider: boolean = false;
   @Input() channelTitle;
+  @Input() listenURL;
 
   constructor() { }
 
-  ngOnInit() {
-      x = new Audio("../../assets/csitaly.mp3");
+  ngOnInit() { }
+
+  ngOnChanges(changes: SimpleChanges) {
+    if (x) {
+      x.pause();
+      this.play = false;
+    }
   }
 
   playAudio() {
-      this.play = true;
-      x.play();
+      if (this.listenURL != '') {
+        x = new Audio(this.listenURL);
+        this.play = true;
+        x.play();
+      }
   }
 
   pauseAudio() {
@@ -32,7 +41,6 @@ export class audioBoxComponent implements OnInit {
   }
 
   SetVolume() {
-      console.log(this.audio);
       x.volume = this.audio;
   }
 

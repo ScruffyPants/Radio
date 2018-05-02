@@ -65,6 +65,11 @@ ul li strong {
     );
 }
 
+ul li em {
+  float: right;
+  margin-right: 15vw;
+}
+
 #small_radio {
   display: inline;
   height: 50px;
@@ -95,18 +100,15 @@ ul li strong {
   margin-bottom: 0.5em;
 }
 
-audio {
-  width: 40%;
-  margin-bottom: -8px;
-  float: right;
-}
 
-audio::-webkit-media-controls-panel {
-	background: #390606;
-  border-radius: 0;
-}
+@media only screen and (min-height: 850px) {
 
-audio::-webkit-media-controls-play-button,
-audio::-webkit-media-controls-mute-button {
-	color: white;
+  .playerBox {
+    top: -25vh;
+  }
+
+  .channels-number {
+    margin-top: 80vh;
+  }
+
 }

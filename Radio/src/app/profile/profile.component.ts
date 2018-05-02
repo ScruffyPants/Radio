@@ -15,6 +15,7 @@ import { Globals } from '../globals';
 export class ProfileComponent implements OnInit {
 
   repeatPassword: boolean = false;
+  oldPassword: boolean = false;
   channelToken: string = '';
   pwError: string;
   successBox: boolean = false;
@@ -61,7 +62,9 @@ export class ProfileComponent implements OnInit {
 
   }
 
-  showRePw() { this.repeatPassword = true }
+  showOldPw() { this.oldPassword = true }
+
+  showRePw() { this.repeatPassword = true; this.oldPassword = true; }
 
   showToken() {
     this.channelToken = "loading..."

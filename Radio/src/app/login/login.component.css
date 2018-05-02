@@ -117,3 +117,11 @@ input.btn:hover {
     margin-left: 0;
   }
 }
+
+@media only screen and (min-width: 1450px) {
+
+  #radio_logo {
+    margin-left: 18%;
+  }
+
+}
