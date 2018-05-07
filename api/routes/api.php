@@ -28,9 +28,11 @@ Route::post('get-passwordHint', 'LoginController@getPasswordHint');
 Route::group(['middleware' => 'auth:api'], function(){
     Route::post('get-details', 'LoginController@getDetails');
 
-    Route::post('change-password', 'LoginController@changePassword');
+    Route::post('reset-password', 'LoginController@resetPassword');
 
     Route::post('get-channels', 'ChannelController@getChannels');
 
     Route::post('get-streamKey', 'ChannelController@getStreamKey');
+
+    Route::post('setImage', 'ChannelController@uploadImage');
 });

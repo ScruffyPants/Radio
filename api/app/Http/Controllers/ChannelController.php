@@ -7,6 +7,7 @@ use App\Channel as Channel;
 use App\Http\Resources\Channels;
 use Illuminate\Support\Facades\Auth;
 use App\User as User;
+use function MongoDB\BSON\toJSON;
 use Symfony\Component\HttpFoundation\Response;
 
 class ChannelController extends Controller
@@ -17,8 +18,24 @@ class ChannelController extends Controller
         $contents = json_decode($res->getBody()->getContents());
 
         return json_encode($contents->icestats->source);
+    }
 
-        //return new Channels(Channel::all());
+    public function uploadImage(Request $request){
+        $user = Auth::user();
+
+        if($request -> hasFile('image')){
+            $image = $request->file('image');
+            $name = time().'.'.$image->getClientOriginalExtension();
+            //$destinationPath = storage_path('storage/app/public');
+            $image->storeAs('public', $name);;
+
+            User::where("id",$user->id)->update(['image' => $name]);
+
+            return response()->json(['data'=>"image is uploaded", 'name' => $name]);
+        }
+        else{
+            return response()->json(['data'=>"must include image"]);
+        }
     }
 
     public function getStreamKey(){

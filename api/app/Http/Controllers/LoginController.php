@@ -84,7 +84,6 @@ class LoginController extends Controller
         return response()->json(['success' => $user], $this->successStatus);
     }
 
-
     public function changePassword(Request $request){
         $messages = [
             'password.required' => 'Please enter the old password.',
@@ -116,18 +115,19 @@ class LoginController extends Controller
         }
     }
 
-    public function getPasswordHint(Request $request){
+    public function getPasswordHint(Request $request)
+    {
         $validator = Validator::make($request->all(), [
             'username' => 'required'
         ], [
             'username.required' => 'Please enter username'
         ]);
 
-        if($validator->fails()){
+        if ($validator->fails()) {
             return response()->json(array('error' => $validator->getMessageBag()->toArray()), 400);
         }
 
-        if(User::where('username', $request['username'])->count() >= 1){
+        if (User::where('username', $request['username'])->count() >= 1) {
             return User::select('password_hint')->where('username', $request['username'])->get();
         } else {
             $error = array('username' => 'User with such username not found');
