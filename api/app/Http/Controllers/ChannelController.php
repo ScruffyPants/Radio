@@ -9,6 +9,8 @@ use Illuminate\Support\Facades\Auth;
 use App\User as User;
 use function MongoDB\BSON\toJSON;
 use Symfony\Component\HttpFoundation\Response;
+use Illuminate\Support\Facades\Hash;
+use Validator;
 
 class ChannelController extends Controller
 {
@@ -36,6 +38,12 @@ class ChannelController extends Controller
         else{
             return response()->json(['data'=>"must include image"]);
         }
+    }
+
+    public function getImage(){
+        $user = Auth::user();
+
+        return response()->json(['image' => $user->image]);
     }
 
     public function getStreamKey(){
@@ -87,5 +95,33 @@ class ChannelController extends Controller
         }
 
         return response() -> json() -> header('icecast-auth-user:0','');
+    }
+
+    public function changeInfo(Request $request){
+        $messages = [
+            'password.required' => 'Please enter the old password.',
+            'new_name.required' => 'Please enter new username'
+        ];
+
+        $validator = Validator::make($request->all(), [
+            'new_name' => 'required',
+            'password' => 'required',
+        ], $messages);
+
+        if($validator->fails()){
+            return response()->json(array('error' => $validator->getMessageBag()->toArray()), 400);
+        }
+
+        if(User::where('username',$request['new_name'])->count() <= 0){
+            $user = Auth::user();
+            if(Hash::check($request['password'], $user->password)) {
+                User::where('id', $user->id)->update(["username" => $request['new_name']]);
+                return response()->json(["success" => "new username set"]);
+            } else {
+                return response()->json(["error" => "incorrect password"]);
+            }
+        } else {
+            return response()->json(["error" => "username is already taken"]);
+        }
     }
 }

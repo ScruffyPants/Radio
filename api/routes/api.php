@@ -35,4 +35,8 @@ Route::group(['middleware' => 'auth:api'], function(){
     Route::post('get-streamKey', 'ChannelController@getStreamKey');
 
     Route::post('setImage', 'ChannelController@uploadImage');
+
+    Route::post('getImage', 'ChannelController@getImage');
+
+    Route::post('changeInfo', 'ChannelController@changeInfo');
 });
