@@ -57,7 +57,7 @@ class ChannelController extends Controller
             $channel->name = $key;
 
             $channel->save();
-            
+
             return response()->json(['key' => $key]);
         } else {
             //INSERT
@@ -100,7 +100,7 @@ class ChannelController extends Controller
     public function changeInfo(Request $request){
         $messages = [
             'password.required' => 'Please enter the old password.',
-            'new_name.required' => 'Please enter new username'
+            'new_name.required' => 'Please enter the new username.'
         ];
 
         $validator = Validator::make($request->all(), [
@@ -116,12 +116,12 @@ class ChannelController extends Controller
             $user = Auth::user();
             if(Hash::check($request['password'], $user->password)) {
                 User::where('id', $user->id)->update(["username" => $request['new_name']]);
-                return response()->json(["success" => "new username set"]);
+                return response()->json(["success" => "The new username has been set."]);
             } else {
-                return response()->json(["error" => "incorrect password"]);
+                return response()->json(["error" => "The old password is incorrect."]);
             }
         } else {
-            return response()->json(["error" => "username is already taken"]);
+            return response()->json(["error" => "This username has been already taken."]);
         }
     }
 }

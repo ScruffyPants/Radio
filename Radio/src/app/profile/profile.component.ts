@@ -5,6 +5,8 @@ import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { AuthService } from '../auth.service';
 import { Globals } from '../globals';
 
+var file;
+
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.component.html',
@@ -19,6 +21,7 @@ export class ProfileComponent implements OnInit {
   channelToken: string = '';
   pwError: string;
   successBox: boolean = false;
+  changed_value: string = 'atitude';
 
   constructor(private router: Router, private http: HttpClient, private authService: AuthService, private globals: Globals) { }
 
@@ -32,34 +35,97 @@ export class ProfileComponent implements OnInit {
 
   onSubmit(form){
 
-    this.http.post('http://localhost:8000/api/change-password',
-      {
 
-        new_password: form.value.new_pw,
-        c_password: form.value.re_pw,
-        password: form.value.old_pw
+    // USERNAME CHANGE
+    if (form.value.new_usr) {
+      if (form.value.new_usr.length<4) this.pwError = "The new username length must not be less than 4."
 
-      }, {headers: this.authService.checkAuth()}).subscribe(res => {
+      else {
+        this.http.post('http://localhost:8000/api/changeInfo',
+          {
 
-          if (res['success']){
-            this.pwError = null;
-            this.successBox = true;
-            setTimeout(() => { this.successBox = false; }, 1000);
-          }
+            new_name: form.value.new_usr,
+            password: form.value.old_pw
 
-        }, (err: HttpErrorResponse)=> {
+          }, {headers: this.authService.checkAuth()}).subscribe(res => {
+              if (res['error']) this.pwError = res['error'];
 
-          console.log(err['error'].error);
-          if (err['error'].error.new_password)
-            this.pwError = err['error'].error.new_password;
-          else if (err['error'].error.c_password=="The c password field is required.")
-            this.pwError = "Please enter the confirmation password.";
-          else if (err['error'].error.c_password)
-            this.pwError = err['error'].error.c_password;
-          else if (err['error'].error.password)
-            this.pwError = err['error'].error.password;
-    });
+              if (res['success']){
 
+                this.pwError = null;
+                this.changed_value = 'username';
+                this.successBox = true;
+                setTimeout(() => { this.successBox = false; }, 1000);
+
+              }
+
+            }, (err: HttpErrorResponse)=> { if(err['error'].error.password) this.pwError = err['error'].error.password; });
+        }
+    }
+
+
+    //PASSWORD CHANGE
+    else if (form.value.new_pw) {
+
+      if (form.value.new_pw.length<6) this.pwError = "The new password must be longer than 6 characters.";
+
+      else {
+        this.http.post('http://localhost:8000/api/changePassword',
+          {
+
+            new_password: form.value.new_pw,
+            c_password: form.value.re_pw,
+            password: form.value.old_pw
+
+          }, {headers: this.authService.checkAuth()}).subscribe(res => {
+
+              if (res['success']){
+                this.pwError = null;
+                this.changed_value = 'password';
+                this.successBox = true;
+                setTimeout(() => { this.successBox = false; }, 1000);
+              }
+
+            }, (err: HttpErrorResponse)=> {
+
+              if (err['error'].error.new_password)
+                this.pwError = err['error'].error.new_password;
+              else if (err['error'].error.c_password=="The c password field is required.")
+                this.pwError = "Please enter the confirmation password.";
+              else if (err['error'].error.c_password)
+                this.pwError = err['error'].error.c_password;
+              else if (err['error'].error.password)
+                this.pwError = err['error'].error.password;
+        });
+      }
+    }
+
+
+    //IMAGE CHANGE
+    else if (form.value.image) {
+
+      console.log(form.value.image)
+      console.log(file)
+
+      this.http.post('http://localhost:8000/api/setImage',
+        {
+
+          image: file
+
+        }, {headers: this.authService.checkAuth()}).subscribe(res => { console.log(res); },
+        (err: HttpErrorResponse)=> { console.log(err['error'].error); }
+      );
+    }
+
+  }
+
+  onFileChanged(event) {
+    //file = (<HTMLInputElement>event.target).files[0];
+    var fReader = new FileReader();
+    fReader.readAsDataURL((<HTMLInputElement>event.target).files[0]);
+    fReader.onloadend = function(event){
+        file = event.target['result'];
+    }
   }
 
   showOldPw() { this.oldPassword = true }
