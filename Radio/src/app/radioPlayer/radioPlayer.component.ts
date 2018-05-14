@@ -4,8 +4,8 @@ import { routerTransition } from '../router.animations';
 import { trigger,style,transition,animate,keyframes,query,stagger } from '@angular/animations';
 
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
-import { Observable } from 'rxjs/Observable';
 import { AuthService } from '../auth.service';
+import { Globals } from '../globals';
 
 @Component({
   selector: 'app-player',
@@ -18,26 +18,56 @@ export class radioPlayerComponent implements OnInit {
 
     public channels: any;
     tempDiv: boolean = false;
-    channelTitle: string = '-';
     spinner: boolean = true;
-    listenURL: string = '';
     old_ch: number = null;
+    optGenre: string = null;
+    optListen: boolean = false;
+    allChannels: any;
+    allGenres: any;
+    loaded: boolean = false;
 
-    constructor(private router: Router, private http: HttpClient, private authService: AuthService) { }
+    constructor(private router: Router, private http: HttpClient, private globals: Globals, private authService: AuthService) { }
 
     ngOnInit() {
+
       this.http.post('http://localhost:8000/api/get-channels',null,{headers: this.authService.checkAuth()})
         .subscribe(data => {
+          this.loaded = false;
 
           if (data['server_name']) {
             this.channels = [];
+            this.allChannels = [];
             this.channels.push(data);
-            console.log(data['server_name']);
+            this.allChannels.push(data);
           }
 
-          else this.channels = data;
+          else {
+            this.channels = data;
+            this.allChannels = data;
+          }
 
-          setTimeout(() => { this.spinner = false; }, 50);
+          this.allGenres = [];
+
+          for(let i = 0; i<this.channels.length; i++) {
+
+            this.allGenres.push(this.channels[i].genre);
+
+            if (this.channels[i].server_name == this.globals['channelTitle']){
+
+              if (this.old_ch != null) this.channels[this.old_ch].listeners--;
+
+              this.channels[i].listeners++;
+              this.old_ch = i;
+
+            }
+
+            if (this.optGenre && this.optGenre!="any") {
+              if (this.channels[i].genre != this.optGenre) this.channels.splice(i,1)
+            }
+
+          }
+
+          setTimeout(() => { this.spinner = false; this.loaded = true; }, 50);
         }, (err: HttpErrorResponse) => { console.log(err['error'].message) });
     }
 
@@ -45,10 +75,15 @@ export class radioPlayerComponent implements OnInit {
       if (this.old_ch != null)
         this.channels[this.old_ch].listeners--;
 
-      this.channelTitle = this.channels[i].server_name;
-      this.listenURL = this.channels[i].listenurl;
+      this.globals['channelTitle'] = this.channels[i].server_name;
+      this.globals['listenURL'] = this.channels[i].listenurl;
 
       this.channels[i].listeners++;
       this.old_ch = i;
+    }
+
+    filter() {
+      this.ngOnInit();
+      if (this.optListen) alert(this.optListen);
     }
 }

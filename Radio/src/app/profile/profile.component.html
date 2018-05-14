@@ -2,7 +2,7 @@
 
   <div class="profile-page">
 
-    <h1 class="page-title">Profile of <img id="profile_pic" src="../../assets/muteBtn.png" alt="Your profile picture."></h1>
+    <h1 class="page-title">Profile of <img id="profile_pic" src="http://localhost:8000/storage/{{pic_id}}"></h1>
 
     <div class="formdiv">
 
@@ -41,8 +41,9 @@
         </div>
 
         <div class="form-control">
-          <p>Import avatar:</p>
+          <!-- <p>Import avatar:</p>
           <input id="myImg" type="file" name="avatar" accept="image/*" ngModel name="image" (change)="onFileChanged($event)">
+           -->
           <input type="submit" class="btn">
         </div>
 

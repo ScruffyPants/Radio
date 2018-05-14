@@ -9,7 +9,30 @@
           of broadcasting instead of the traditional radio waves. The proper term used for internet
           radio is webcasting, as it is not actually broadcast through wireless signals.
           It is a form of streaming media where content is usually provided live instead of being
-          prerecorded like some podcasts.</p>
+          prerecorded like some podcasts.</p><br>
+
+
+        <div *ngIf="channelFound">
+
+          <h2>Recommended servers</h2>
+
+          <div class="searchList" *ngIf="channelFound">
+            <ul>
+              <li *ngFor="let channel of channelFound; let i = index" (click)="chooseChannel(i)">
+
+                <h3 class="recommendedPar">
+                  {{ channel.server_name }}:
+                </h3>
+
+                <p class="recommendedPar"> {{ channel.server_description }}</p><br>
+                <p class="recommendedPar" *ngIf="channel.title"><i>Currently playing: <b>{{ channel.title }}</b></i></p>
+
+              </li>
+
+            </ul>
+          </div>
+
+        </div>
 
   </div>
 </div>

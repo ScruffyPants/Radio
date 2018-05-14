@@ -1,5 +1,32 @@
 <div class="main-container">
-  <div class="content">
-      <p>Sori, no work yet :,(</p>
+  <div class="search-pg">
+
+    <h1 class="page-title">Search</h1>
+
+    <div class="search-box">
+
+      <form (ngSubmit)="search(fm)" #fm="ngForm">
+        <input class="searchKey" type="text"  ngModel name="searchKey" value="" [(ngModel)]="searchKey">
+        <input type="submit" class="btn" value="Search ">
+      </form>
+
+    </div>
+
+    <div class="searchList" *ngIf="channelFound">
+      <ul>
+        <li *ngFor="let channel of channelFound; let i = index" (click)="chooseChannel(i)">
+
+          <h3>
+            {{ channel.server_name }}:
+          </h3>
+
+          <p> {{ channel.server_description }}</p><br>
+          <p *ngIf="channel.title"><i>Currently playing: <b>{{ channel.title }}</b></i></p>
+
+        </li>
+
+      </ul>
+    </div>
+
   </div>
 </div>

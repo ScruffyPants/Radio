@@ -2,8 +2,24 @@
 
 <div class="main-container" *ngIf="!spinner">
 
-  <audioBox class="playerBox" [channelTitle]="channelTitle" [listenURL]="listenURL"></audioBox>
+  <audioBox class="playerBox" [channelTitle]="globals['channelTitle']" [listenURL]="globals['listenURL']"></audioBox>
 
+  <div class="filterBox">
+
+    <label> Genre </label>
+    <select [(ngModel)]="optGenre" id="genre" (change)="filter()">
+      <option value="any">Any</option>
+      <option *ngFor="let genre of allGenres" value="{{ genre }}">{{ genre }}</option>
+    </select>
+
+    <label> Listeners </label>
+    <select [(ngModel)]="optListen" id="listeners">
+      <option value="any">Any</option>
+      <option value="more">More than 0</option>
+      <option value="less">None</option>
+    </select>
+
+  </div>
 
   <div class="channels-number">
     Number of Channels: <strong>{{channels.length}}</strong>
@@ -21,7 +37,7 @@
           </h1>
 
           <p>{{ channel.server_description }}</p>
-          <p><i>Currently playing: <b>{{ channel.title }}</b></i></p>
+          <p><i>Currently playing: <b>{{ channel.title }}<b *ngIf="!channel.title">-</b></b></i></p>
 
           <strong>{{ channel.genre }}</strong>
 

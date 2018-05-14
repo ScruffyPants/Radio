@@ -4,11 +4,6 @@
   max-height: 100vh;
   margin-right: 8px;
 }
-
-.page-title {
-  margin-left: 2.5em;
-  margin-bottom: 0.4em;
-}
 .formdiv {
   margin-top: 0.5em;
   padding: 1em 5em;
@@ -26,9 +21,6 @@ p {
   text-align: right;
 }
 input {
-    border: 0;
-    border-radius: 4px;
-    padding: .4em;
     width: 16em;
 }
 input.btn {
@@ -92,5 +84,4 @@ button.tokenBtn:hover {
   width: 70px;
   margin: 5px 10px -15px 10px;
   height: auto;
-  filter: invert(100%);
 }

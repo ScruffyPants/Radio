@@ -22,6 +22,7 @@ export class ProfileComponent implements OnInit {
   pwError: string;
   successBox: boolean = false;
   changed_value: string = 'atitude';
+  pic_id: string;
 
   constructor(private router: Router, private http: HttpClient, private authService: AuthService, private globals: Globals) { }
 
@@ -31,6 +32,13 @@ export class ProfileComponent implements OnInit {
     if (this.globals['channel_token']!='Generate token in Profile.'){
       this.channelToken = this.globals['channel_token'];
     }
+
+    this.http.post('http://localhost:8000/api/getImage',null, {headers: this.authService.checkAuth()})
+      .subscribe(res => {
+        this.pic_id = res['image'];
+        if (!res['image']) this.pic_id = '1525857621.png';
+      },
+      (err: HttpErrorResponse)=> { this.pic_id = '1525857621.png' });
   }
 
   onSubmit(form){
@@ -102,31 +110,31 @@ export class ProfileComponent implements OnInit {
 
 
     //IMAGE CHANGE
-    else if (form.value.image) {
-
-      console.log(form.value.image)
-      console.log(file)
-
-      this.http.post('http://localhost:8000/api/setImage',
-        {
-
-          image: file
-
-        }, {headers: this.authService.checkAuth()}).subscribe(res => { console.log(res); },
-        (err: HttpErrorResponse)=> { console.log(err['error'].error); }
-      );
-    }
+    // else if (form.value.image) {
+    //
+    //   console.log(form.value.image)
+    //   console.log(file)
+    //
+    //   this.http.post('http://localhost:8000/api/setImage',
+    //     {
+    //
+    //       image: file
+    //
+    //     }, {headers: this.authService.checkAuth()}).subscribe(res => { console.log(res); },
+    //     (err: HttpErrorResponse)=> { console.log(err['error'].error); }
+    //   );
+    // }
 
   }
 
-  onFileChanged(event) {
-    //file = (<HTMLInputElement>event.target).files[0];
-    var fReader = new FileReader();
-    fReader.readAsDataURL((<HTMLInputElement>event.target).files[0]);
-    fReader.onloadend = function(event){
-        file = event.target['result'];
-    }
-  }
+  // onFileChanged(event) {
+  //   //file = (<HTMLInputElement>event.target).files[0];
+  //   var fReader = new FileReader();
+  //   fReader.readAsDataURL((<HTMLInputElement>event.target).files[0]);
+  //   fReader.onloadend = function(event){
+  //       file = event.target['result'];
+  //   }
+  // }
 
   showOldPw() { this.oldPassword = true }
 

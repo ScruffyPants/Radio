@@ -1,6 +1,6 @@
 .playerBox {
   position: absolute;
-  top: -33vh;
+  top: 67%;
   right: 320px;
 }
 
@@ -81,7 +81,7 @@ ul li em {
 
 .spinnerP {
   position: absolute;
-  top: -80vh;
+  top: 20vh;
   left: 35%;
   filter: drop-shadow(0 0 2px pink);
 }
@@ -104,7 +104,7 @@ ul li em {
 @media only screen and (min-height: 850px) {
 
   .playerBox {
-    top: -25vh;
+    top: 70%;
   }
 
   .channels-number {

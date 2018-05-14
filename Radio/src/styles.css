@@ -17,14 +17,21 @@ a {
   cursor: pointer;
 }
 
-.main-container {
-  margin-top: -100vh;
-  margin-left: 16em;
+input {
+    border: 0;
+    border-radius: 4px;
+    padding: .4em;
 }
 
-.content {
-  margin-top: 60px;
-  margin-left: 10px;
+.main-container {
+  margin-top: 0;
+  margin-left: 16em;
+  justify-content: center;
+}
+
+.page-title {
+  margin-left: .5em;
+  margin-bottom: 0.4em;
 }
 
 .page-title {

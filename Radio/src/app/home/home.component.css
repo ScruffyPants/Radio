@@ -1,3 +1,32 @@
 .content {
-  margin-right: 10em;
+  overflow-y: auto;
+  overflow-x: hidden;
+  max-height: 100vh;
+  margin-right: 8px;
+}
+
+.searchList {
+  margin-top: 0.5em;
+  padding: 1em 0;
+  border: 5px solid orange;
+  width: 661px;
+}
+
+h3.recommendedPar {
+  display: inline;
+}
+p.recommendedPar {
+  display: inline;
+}
+ul {
+  list-style: none;
+}
+ul li {
+  margin: 1em 1em 1em 0;
+  width: 500px;
+  min-height: 30px;
+  padding: 1em 3em 1em 2em;
+  /* border */
+  border: 3px solid #821e30;
+  cursor: pointer;
 }
