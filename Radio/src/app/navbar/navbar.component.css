@@ -55,4 +55,7 @@ nav ul li a:hover {
   nav ul li {
     padding-top: 2em;
   }
+  .blank-space {
+    height: 32vh;
+  }
 }

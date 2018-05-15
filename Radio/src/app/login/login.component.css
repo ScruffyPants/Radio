@@ -121,4 +121,7 @@ input.btn:hover {
     margin-left: 18%;
   }
 
+  input.txt {
+    min-width: 60%;
+  }
 }

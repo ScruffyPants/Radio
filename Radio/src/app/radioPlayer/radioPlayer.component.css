@@ -4,13 +4,32 @@
   right: 320px;
 }
 
+.filterBox {
+  padding: .3em 5em;
+  background-color: #2a352b;
+  margin-left: -2.8em;
+  font-size: 1.2em;
+  font-weight: bold;
+  font-style: italic;
+  letter-spacing: 1px;
+}
+
+.filterBox label {
+  margin-right: 1.5em;
+}
+
+.filterBox select {
+  border-radius: 18px;
+  width: 150px;
+  text-align: center;
+}
+
 .channels-number {
-  position: absolute;
-  transform: rotate(-90deg);
-  margin-top: 70vh;
-  left: 5em;
+  position: fixed;
   color: white;
   font-size: 1.5em;
+  right: 3em;
+  top: 0.1em;
 }
 
 ul {
@@ -108,7 +127,7 @@ ul li em {
   }
 
   .channels-number {
-    margin-top: 80vh;
+    right: 5em;
   }
 
 }

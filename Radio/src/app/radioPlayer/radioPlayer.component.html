@@ -6,17 +6,10 @@
 
   <div class="filterBox">
 
-    <label> Genre </label>
+    <label> Genre    </label>
     <select [(ngModel)]="optGenre" id="genre" (change)="filter()">
-      <option value="any">Any</option>
+      <option value="any" default>Any</option>
       <option *ngFor="let genre of allGenres" value="{{ genre }}">{{ genre }}</option>
-    </select>
-
-    <label> Listeners </label>
-    <select [(ngModel)]="optListen" id="listeners">
-      <option value="any">Any</option>
-      <option value="more">More than 0</option>
-      <option value="less">None</option>
     </select>
 
   </div>

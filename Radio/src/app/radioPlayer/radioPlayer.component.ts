@@ -21,7 +21,6 @@ export class radioPlayerComponent implements OnInit {
     spinner: boolean = true;
     old_ch: number = null;
     optGenre: string = null;
-    optListen: boolean = false;
     allChannels: any;
     allGenres: any;
     loaded: boolean = false;
@@ -32,7 +31,6 @@ export class radioPlayerComponent implements OnInit {
 
       this.http.post('http://localhost:8000/api/get-channels',null,{headers: this.authService.checkAuth()})
         .subscribe(data => {
-          this.loaded = false;
 
           if (data['server_name']) {
             this.channels = [];
@@ -46,11 +44,11 @@ export class radioPlayerComponent implements OnInit {
             this.allChannels = data;
           }
 
-          this.allGenres = [];
+          if (!this.allGenres) this.allGenres = [];
 
           for(let i = 0; i<this.channels.length; i++) {
 
-            this.allGenres.push(this.channels[i].genre);
+            if (!this.loaded) this.allGenres.push(this.channels[i].genre);
 
             if (this.channels[i].server_name == this.globals['channelTitle']){
 
@@ -62,7 +60,14 @@ export class radioPlayerComponent implements OnInit {
             }
 
             if (this.optGenre && this.optGenre!="any") {
-              if (this.channels[i].genre != this.optGenre) this.channels.splice(i,1)
+
+              if (this.optGenre && this.channels[i] != null)
+
+                if (this.channels[i].genre != this.optGenre) {
+                  this.channels.splice(i,1);
+                  i--;
+                }
+
             }
 
           }
@@ -84,6 +89,5 @@ export class radioPlayerComponent implements OnInit {
 
     filter() {
       this.ngOnInit();
-      if (this.optListen) alert(this.optListen);
     }
 }
