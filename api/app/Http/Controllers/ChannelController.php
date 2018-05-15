@@ -19,7 +19,16 @@ class ChannelController extends Controller
         $res = $client->request('GET', 'http://localhost:8020/status-json.xsl');
         $contents = json_decode($res->getBody()->getContents());
 
-        foreach ($contents->icestats->source as $channel){
+        //dd(sizeof($contents->icestats->source));
+        if(is_array($contents->icestats->source)) {
+            foreach ($contents->icestats->source as $channel) {
+                $name = substr($channel->listenurl, 22);
+                $id = User::where('username', $name)->first()->id;
+                $recommended = Channel::where('id', $id)->first()->recommended;
+                $channel->recommended = $recommended;
+            }
+        } else {
+            $channel = $contents->icestats->source;
             $name = substr($channel->listenurl, 22);
             $id = User::where('username', $name)->first()->id;
             $recommended = Channel::where('id', $id)->first()->recommended;
